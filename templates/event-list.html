@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block head %}
+<style>
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .event-list ul, .event-list ol {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+</style>
+{% endblock %}
+{% block title %}Iowa City Swing Events{% endblock %}
+{% block content %}
+<div class="event-list">
+  <h1>Event Calendar</h1>
+  <div>If you would like to submit an event to this list, <a target="_blank" rel="noopener" href="https://docs.google.com/forms/d/e/1FAIpQLScIZwHCgDbRiXvzzn5TsIZ4pvGRX6_Jk3K4tK0IV6AWsuy2VA/viewform?usp=sf_link">
+    fill out our form!</a>
+  </div>
+  <hr class="event-separator">
+
+  <ol class="event-list">
+    {% for event in events %}
+    <li class="event-item">
+      <div class="event-name">
+
+        <em class="event-time">
+          {% include 'clock.svg' %}
+          {{ event.print_date() }}
+        </em>
+        <strong>{{ event.name }}</strong>
+      </div>
+      {% if event.location %}
+      <div class="event-line">
+        {% include "location.svg" %}
+
+        <a href="{{ event.maps_link() }}" target="_blank" rel="noopener">
+          {{ event.location }}
+        </a>
+      </div>
+      {% endif %}
+      {{ event.description | safe }}
+    </li>
+    {% if not loop.last %}
+    <hr class="event-separator">
+    {% endif %}
+    {% endfor %}
+  </ol>
+</div>
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'none'">
+    <style>{% include 'assets/reset-minified.css' %}</style>
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+    <style>
+        :root {
+          --page-background:  #2A344D;
+          --content-background:  #fee6b8;
+        }
+        html {
+          background: var(--page-background);
+          font-family: Futura;
+
+          flex-direction: column;
+          word-break: break-word;
+          padding: 2rem;
+        }
+
+        body {
+          padding: 2rem;
+          margin: 0 auto;
+
+          display: flex;
+          flex-direction: column;
+
+          max-width: 60ch;
+          margin: 0 auto;
+          background: var(--content-background);
+          border-radius: 1rem;
+          padding: 1rem 2rem 2rem;
+        }
+
+        a {
+          color: #00308F;
+          color: #0066b2;
+        }
+
+        hr {
+          margin-top: none;
+        }
+
+        .event-list {
+          margin: 0;
+        }
+
+        .event-date {
+          white-space: nowrap;
+          text-align: right;
+        }
+
+        .event-time {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        .event-item {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          work-break: break-word;
+        }
+
+        .event-item a {
+        }
+
+        .event-line {
+          display: flex;
+          gap: 0.5rem;
+        }
+
+        .event-line svg {
+          height:1rem;
+          flex-shrink: 0;
+          margin-top: 2.5px;
+        }
+
+        .event-separator {
+          margin: 2rem 0;
+          border-color: black;
+          border-top: none;
+        }
+
+        .event-item p {
+          margin: 0;
+        }
+
+        .event-date--hidden {
+          visibility: hidden;
+        }
+
+        .event-name {
+          margin-top: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .event-name svg {
+          height: 1rem;
+        }
+
+    </style>
+  </head>
+  <body>{% block content %}{% endblock %}</body>
+</html>

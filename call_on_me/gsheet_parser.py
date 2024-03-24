@@ -1,0 +1,83 @@
+import csv
+import dataclasses
+import io
+import uuid
+from typing import Optional
+
+import arrow
+import requests
+
+from .event import Event
+
+
+URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoLhPSYQqlB2G-dBEjBLR7hFi6CWXkdqAchP2EcIt8AP6IorgTZYYT_ck4KbRvGfUJPw0P5LPduz4g/pub?output=csv"
+
+
+@dataclasses.dataclass
+class _CsvEvent:
+    timestamp: Optional[str]
+    title: Optional[str]
+    description: Optional[str]
+    start_date: Optional[str]
+    end_date: Optional[str]
+    name: Optional[str]
+    email: Optional[str]
+    location: Optional[str]
+
+    @staticmethod
+    def from_dict(d):
+        return _CsvEvent(
+            timestamp=d.get("Timestamp"),
+            title=d.get("Event Title"),
+            description=d.get("Event Description"),
+            start_date=d.get("Event Start Date"),
+            end_date=d.get("Event End Date (Optional)"),
+            name=d.get("Your Name (will not be shared)"),
+            email=d.get("Your Email (will not be shared)"),
+            location=d.get("Event Location"),
+        )
+
+
+def _csv_event_to_event(csv_event: _CsvEvent) -> Event:
+
+    start_date = arrow.get(csv_event.start_date, "M/D/YYYY").replace(
+        tzinfo="America/Chicago"
+    )
+
+    end_date = (
+        arrow.get(csv_event.end_date, "M/D/YYYY").replace(tzinfo="America/Chicago")
+        if csv_event.end_date
+        else None
+    )
+
+    description = csv_event.description.replace("\n", "<br>")
+    description = f"<div>{description}</div>"
+
+    return Event(
+        location=csv_event.location,
+        name=csv_event.title,
+        description=description,
+        start=start_date,
+        end=end_date,
+        dance_type="TODO",
+        source="gform",
+        id=str(uuid.uuid4()),
+    )
+
+
+def file_csv(path: str) -> str:
+    with open(path) as f:
+        return f.read()
+
+
+def gsheet_csv():
+    return requests.get(URL).text
+
+
+def parse_gsheet(event_csv: str, start_at: arrow.Arrow) -> list[Event]:
+    io_like = io.StringIO(event_csv)
+    lines = csv.DictReader(io_like)
+    csv_events = list(map(_CsvEvent.from_dict, lines))
+    csv_events = [cv for cv in csv_events if not cv.title.startswith("TEST")]
+    events = list(map(_csv_event_to_event, csv_events))
+    return [e for e in events if e.start >= start_at]

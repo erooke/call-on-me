@@ -1,0 +1,114 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Iowa City - Dance Events
+X-WR-TIMEZONE:America/Chicago
+BEGIN:VTIMEZONE
+TZID:America/Chicago
+X-LIC-LOCATION:America/Chicago
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0500
+TZNAME:CDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0600
+TZNAME:CST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART:20240217T010000Z
+DTEND:20240217T040000Z
+DTSTAMP:20240317T205520Z
+UID:euf63e9rfbiq17dn89aeqje724@google.com
+CREATED:20240215T050443Z
+DESCRIPTION:Use code “Valentine” for $5 off your ticket.\n\nhttps://prod5.a
+ gileticketing.net/websales/pages/info.aspx?evtinfo=365308~e7ec740d-8476-44f
+ a-ae88-f8602a65365d
+LAST-MODIFIED:20240215T050443Z
+LOCATION:The James Theater\, 213 N Gilbert St\, Iowa City\, IA 52245\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Sounds of Love
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240224T030000Z
+DTEND:20240224T070000Z
+DTSTAMP:20240317T205520Z
+UID:buo06et2u08ulauk8m2qsma9lc@google.com
+CREATED:20240216T161431Z
+DESCRIPTION:https://facebook.com/events/s/salsa-night-vue-rooftop-in-iow/38
+ 8720033729627/
+LAST-MODIFIED:20240216T161431Z
+LOCATION:Vue Rooftop\, 328 S Clinton St Suite A\, Iowa City\, IA 52240\, US
+ A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Salsa at the Vue
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240316T020000Z
+DTEND:20240316T060000Z
+DTSTAMP:20240317T205520Z
+UID:5kgq5p73qfi9o62pdb00bp3b8c@google.com
+CREATED:20240216T161559Z
+DESCRIPTION:https://facebook.com/events/s/salsa-night-vue-rooftop-in-iow/89
+ 0405759345468/
+LAST-MODIFIED:20240216T161559Z
+LOCATION:Vue Rooftop\, 328 S Clinton St Suite A\, Iowa City\, IA 52240\, US
+ A
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Salsa at the Vue
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20240329T203000
+DTEND;TZID=America/Chicago:20240330T013000
+RRULE:FREQ=MONTHLY;UNTIL=20240601T045959Z;BYDAY=-1FR
+DTSTAMP:20240317T205520Z
+UID:v8h0nr58ttb2s406b4los0c6so@google.com
+CREATED:20240216T161853Z
+DESCRIPTION:https://facebook.com/events/s/salsa-night-the-ideal/71717223713
+ 2665/
+LAST-MODIFIED:20240216T161853Z
+LOCATION:The Ideal Theater & Bar\, 213 16th Ave SE\, Cedar Rapids\, IA 5240
+ 1\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Salsa at The Ideal Theatre
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;TZID=America/Chicago:20240302T190000
+DTEND;TZID=America/Chicago:20240302T220000
+RRULE:FREQ=MONTHLY;BYDAY=1SA
+DTSTAMP:20240317T205520Z
+UID:342ujermf80mvj57c4too5hjti@google.com
+CREATED:20240220T051326Z
+DESCRIPTION:Join <a href="https://www.facebook.com/5SeasonsSwing">5 Seasons
+  Swing</a> at the Cherry Building (329 10th Ave SE\, Cedar Rapids) for a be
+ ginner lesson at 7pm and a social dance from 8 - 10pm. <span>$10 / person (
+ cash or Venmo accepted). No experience is necessary\, and no partner is req
+ uired.</span><br><span><br></span><br>Fun\, frivolity\, games\, music\, dan
+ cing...it's the complete package!! Hope to see you there.<br><br>This is a 
+ recurring event on the first Saturday of each month. Check <a href="https:/
+ /www.facebook.com/5SeasonsSwing/events">the Facebook page</a> for event upd
+ ates.
+LAST-MODIFIED:20240220T051326Z
+LOCATION:cherry building\, 329 10th Ave SE\, Cedar Rapids\, IA 52401\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:5 Seasons Swing: Monthly Dance
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

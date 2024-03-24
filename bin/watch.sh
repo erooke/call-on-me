@@ -1,0 +1,1 @@
+fswatch --verbose -r main.py call_on_me/*.py templates/ | xargs -n1 -I{} time python "$PWD"/main.py

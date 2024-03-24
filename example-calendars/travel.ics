@@ -1,0 +1,379 @@
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Travel - Dance Events
+X-WR-TIMEZONE:America/Chicago
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20240517
+DTEND;VALUE=DATE:20240520
+DTSTAMP:20240313T130600Z
+UID:m3eoqthu91hnc36udgnn2fts8o@google.com
+CREATED:20240216T162347Z
+DESCRIPTION:Learn more + register: https://midwestlindyfest.com/
+LAST-MODIFIED:20240216T162347Z
+LOCATION:Minneapolis\, MN\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Minneapolis: The Minnehop Lindy Exchange
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20240823
+DTEND;VALUE=DATE:20240826
+DTSTAMP:20240313T130600Z
+UID:ih22cvtuununl97mciu1csk2t4@google.com
+CREATED:20240216T162512Z
+DESCRIPTION:Learn more + register: https://www.uptownswingout.com/
+LAST-MODIFIED:20240216T162512Z
+LOCATION:Minneapolis\, MN\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Minneapolis: The Uptown Swingout
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240225T013000Z
+DTEND:20240225T070000Z
+DTSTAMP:20240313T130600Z
+UID:o448nn9iec60tg80dlu9tcqrj0@google.com
+CREATED:20240216T163031Z
+DESCRIPTION:Blues dancing in Chicago! Learn more: https://facebook.com/even
+ ts/s/february-bluetopia/1370352426953215/
+LAST-MODIFIED:20240216T163031Z
+LOCATION:Forteza Fitness\, Physical Culture & Martial Arts (Ravensrook Arch
+ ery)\, 4437 N Ravenswood Ave\, Chicago\, IL 60640\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Chicago: Bluetopia
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240224T180000Z
+DTEND:20240224T230000Z
+DTSTAMP:20240313T130600Z
+UID:i8iegj07orkbmr6sc6p32n7ebs@google.com
+CREATED:20240216T163224Z
+DESCRIPTION:Blues lessons + workshop before Bluetopia dance event. Learn mo
+ re + register: https://facebook.com/events/s/february-bluetopia-workshop/10
+ 53274055768659/
+LAST-MODIFIED:20240216T163224Z
+LOCATION:Dance Center Chicago\, 3868 N Lincoln Ave 2ND FLOOR\, Chicago\, IL
+  60613\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Chicago: Blues Workshop
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240331T003000Z
+DTEND:20240331T063000Z
+DTSTAMP:20240313T130600Z
+UID:cps8m4rq4ek15r0b17ucji5638@google.com
+CREATED:20240216T163702Z
+DESCRIPTION:Blues social dance in Chicago. Learn more: https://www.facebook
+ .com/chicagobluetopia?mibextid=LQQJ4d
+LAST-MODIFIED:20240216T163702Z
+LOCATION:Forteza Fitness\, Physical Culture & Martial Arts (Ravensrook Arch
+ ery)\, 4437 N Ravenswood Ave\, Chicago\, IL 60640\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Chicago: Bluetopia
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20240628
+DTEND;VALUE=DATE:20240701
+DTSTAMP:20240313T130600Z
+UID:50mhbmgejhh8f3diek3d3dbk8s@google.com
+CREATED:20240216T164042Z
+DESCRIPTION:Vintage jazz weekend workshop in Chicago. Learn more + register
+ : https://www.trafficjamswing.com/scs?
+LAST-MODIFIED:20240216T164042Z
+LOCATION:Chicago\, IL\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Chicago: Second City Swingout
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20240829
+DTEND;VALUE=DATE:20240902
+DTSTAMP:20240313T130600Z
+UID:251a4po27s8jpl09f96tc6odks@google.com
+CREATED:20240219T153808Z
+DESCRIPTION:Learn more: https://facebook.com/events/s/save-the-date-north-s
+ tar-blues/769583158412215/
+LAST-MODIFIED:20240219T153808Z
+LOCATION:Minneapolis\, MN\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Minneapolis: North Star Blues
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240309T010000Z
+DTEND:20240309T040000Z
+DTSTAMP:20240313T130600Z
+UID:1s96cjrc0752e7ibbtuqrluaa2@google.com
+CREATED:20240220T043626Z
+DESCRIPTION:<br>Help Heartland Swing celebrate our 1 year anniversary on Ma
+ rch 8th at Dance-a-Cross in WDM\, IA for a night of music and dance! Juncti
+ on Jazz Society will be joining us again for a night of live music!<br>Less
+ on Time: 7:00-7:30pm<br>Dance Time: 7:30-10:00pm<br>Location: Dance-a-Cross
+  (1970 Grand Ave. #37\, West Des Moines\, IA 50265)<br>Who: Everyone! (no p
+ artner required)<br>Cost: $12/person pre-pay on Venmo @heartlandswing until
+  March 7th. $15/person at the door or day of the event.<br><br>RSVP: <a hre
+ f="https://fb.me/e/3tuAMOANP">https://fb.me/e/3tuAMOANP</a>
+LAST-MODIFIED:20240220T043626Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing Anniversary Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240406T000000Z
+DTEND:20240406T030000Z
+DTSTAMP:20240313T130600Z
+UID:2m3al9nms2mpk1itodm61bgttr@google.com
+CREATED:20240220T043859Z
+DESCRIPTION:<br>Join <a href="https://fb.me/e/1B8IeeBOn">Heartland Swing</a
+ > for their monthly dance on April 5th! Grab your friends and join us at Da
+ nce-a-Cross in WDM from 7:30-10:00pm! Just $7/person\, and everyone is welc
+ ome! No partner required.<br>Date: April 5th<br>Lesson Time: 7:30-8:00pm<br
+ >Dance Time: 8:00-10:00pm<br>Location: Dance-a-Cross (1970 Grand Ave. #37\,
+  West Des Moines\, IA 50265)<br>Who: Everyone! (no partner required)<br>Cos
+ t: $7/person pre-pay on Venmo @heartlandswing or cash at the door<br><br>RS
+ VP: <a href="https://fb.me/e/1B8IeeBOn">https://fb.me/e/1B8IeeBOn</a>
+LAST-MODIFIED:20240220T043859Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing Monthly Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240504T000000Z
+DTEND:20240504T030000Z
+DTSTAMP:20240313T130600Z
+UID:3gc8e60kbpgoauiiql8u20dn4r@google.com
+CREATED:20240220T044057Z
+DESCRIPTION:<br>Join <a href="https://fb.me/e/3s2QkDvPh">Heartland Swing</a
+ > for their monthly dance on May 3th! This month we are encouraging everyon
+ e to dress up and represent their favorite decade: 20's\, 50's\, 80's\, 200
+ 0's\, or any decade in between!<br><br>Grab your friends and join us at Dan
+ ce-a-Cross in WDM from 7:30-10:00pm! Just $7/person\, and everyone is welco
+ me! No partner required.<br>Date: May 3rd<br>Lesson Time: 7:30-8:00pm<br>Da
+ nce Time: 8:00-10:00pm<br>Location: Dance-a-Cross (1970 Grand Ave. #37\, We
+ st Des Moines\, IA 50265)<br>Who: Everyone! (no partner required)<br>Cost: 
+ $7/person pre-pay on Venmo @heartlandswing or cash at the door<br><br>RSVP:
+  <a href="https://fb.me/e/3s2QkDvPh">https://fb.me/e/3s2QkDvPh</a>
+LAST-MODIFIED:20240220T044057Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing's Decades Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240608T000000Z
+DTEND:20240608T030000Z
+DTSTAMP:20240313T130600Z
+UID:5bchd80cmcbt7opq04mcrohkml@google.com
+CREATED:20240220T044316Z
+DESCRIPTION:<br>Join <a href="https://fb.me/e/3VzxcBkfq">Heartland Swing</a
+ > for their monthly dance on June 7th featuring live music from Junction Ja
+ zz Society! Grab your friends and join us at Dance-a-Cross in WDM from 7:00
+ -10:00pm!<br><br>Date: June 7th<br>Lesson Time: 7:00-7:30pm<br>Dance Time: 
+ 7:30-10:00pm<br>Location: Dance-a-Cross (1970 Grand Ave. #37\, West Des Moi
+ nes\, IA 50265)<br>Who: Everyone! (no partner required)<br>Cost: $12/person
+  pre-pay on Venmo @heartlandswing until June 6th or $15/person cash at the 
+ door<br><br>RSVP: <a href="https://fb.me/e/3VzxcBkfq">https://fb.me/e/3Vzxc
+ Bkfq</a>
+LAST-MODIFIED:20240220T044316Z
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing Dance w/ Junction Jazz Society 
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240713T000000Z
+DTEND:20240713T030000Z
+DTSTAMP:20240313T130600Z
+UID:3dg8e5jdjqkek9nel6dqbektpv@google.com
+CREATED:20240220T044450Z
+DESCRIPTION:<br>Join us for Christmas in July on July 12th! Grab your frien
+ ds and join us at Dance-a-Cross in WDM from 7:30-10:00pm! Just $7/person\, 
+ and everyone is welcome! No partner required.<br>We will also be doing a li
+ ve auction this night to fundraise for future Heartland events. Stay tuned 
+ for more information on the auction items that will be available!<br><br>Da
+ te: July 12th<br>Lesson Time: 7:30-8:00pm<br>Dance Time: 8:00-10:00pm<br>Lo
+ cation: Dance-a-Cross (1970 Grand Ave. #37\, West Des Moines\, IA 50265)<br
+ >Who: Everyone! (no partner required)<br>Cost: $7/person pre-pay on Venmo @
+ heartlandswing or cash at the door <br>RSVP: <a href="https://fb.me/e/5boiR
+ 0Uth">https://fb.me/e/5boiR0Uth</a>
+LAST-MODIFIED:20240220T044450Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing's Christmas in July
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240803T000000Z
+DTEND:20240803T030000Z
+DTSTAMP:20240313T130600Z
+UID:7tc9bq5odg5ql3gmbhdq0dt8qn@google.com
+CREATED:20240220T044625Z
+DESCRIPTION:<br>Join us for our monthly dance on August 2nd! Grab your frie
+ nds and join us at Dance-a-Cross in WDM from 7:30-10:00pm! Just $7/person\,
+  and everyone is welcome! No partner required.<br><br>Date: August 2nd<br>L
+ esson Time: 7:30-8:00pm<br>Dance Time: 8:00-10:00pm<br>Location: Dance-a-Cr
+ oss (1970 Grand Ave. #37\, West Des Moines\, IA 50265)<br>Who: Everyone! (n
+ o partner required)<br>Cost: $7/person pre-pay on Venmo @heartlandswing or 
+ cash at the door<br>RSVP: <a href="https://fb.me/e/1wneXT5wz">https://fb.me
+ /e/1wneXT5wz</a>
+LAST-MODIFIED:20240220T044625Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing's Monthly Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20240907T000000Z
+DTEND:20240907T030000Z
+DTSTAMP:20240313T130600Z
+UID:2ch05afeb90ilismn2t92eit5f@google.com
+CREATED:20240220T045136Z
+DESCRIPTION:<br>Join us for a 50's Sock Hop on September 6th! Grab your fri
+ ends and join us at Dance-a-Cross in WDM from 7:30-10:00pm for a Rockin' go
+ od time! Just $7/person\, and everyone is welcome! No partner required.<br>
+ Date: September 6th<br>Lesson Time: 7:30-8:00pm<br>Dance Time: 8:00-10:00pm
+ <br>Location: Dance-a-Cross (1970 Grand Ave. #37\, West Des Moines\, IA 502
+ 65)<br>Who: Everyone! (no partner required)<br>Cost: $7/person pre-pay on V
+ enmo @heartlandswing or cash at the door <br><br>RSVP: <a href="https://fb.
+ me/e/4OwopbpSq">https://fb.me/e/4OwopbpSq</a>
+LAST-MODIFIED:20240220T045136Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: 50's Sock Hop
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20241005T000000Z
+DTEND:20241005T030000Z
+DTSTAMP:20240313T130600Z
+UID:0ufpj3d5fqt4v3kh84tagfuil2@google.com
+CREATED:20240220T050448Z
+DESCRIPTION:<br>Join us for our monthly dance on October 4th! Grab your fri
+ ends and join us at Dance-a-Cross in WDM from 7:30-10:00pm! Just $7/person\
+ , and everyone is welcome! No partner required.<br><br>Date: October 4th<br
+ >Lesson Time: 7:30-8:00pm<br>Dance Time: 8:00-10:00pm<br>Location: Dance-a-
+ Cross (1970 Grand Ave. #37\, West Des Moines\, IA 50265)<br>Who: Everyone! 
+ (no partner required)<br>Cost: $7/person pre-pay on Venmo @heartlandswing o
+ r cash at the door<br><br>RSVP: <a href="https://fb.me/e/1O47BrXlL">https:/
+ /fb.me/e/1O47BrXlL</a>
+LAST-MODIFIED:20240220T050448Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Heartland Swing Monthly Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20241102T000000Z
+DTEND:20241102T030000Z
+DTSTAMP:20240313T130600Z
+UID:7o2rc0k6ng3dlq0mmudl90rkms@google.com
+CREATED:20240220T050705Z
+DESCRIPTION:<br>Join us for our Halloween dance on November 1st with live m
+ usic from Junction Jazz Society! Dress-up in your favorite Halloween costum
+ e for a spooky good time! Grab your friends and join us at Dance-a-Cross in
+  WDM from 7:00-10:00pm!<br>No real or fake weapons will be allowed inside t
+ he venue.<br><br>Date: November 1st<br>Lesson Time: 7:00-7:30pm<br>Dance Ti
+ me: 7:30-10:00pm<br>Location: Dance-a-Cross (1970 Grand Ave. #37\, West Des
+  Moines\, IA 50265)<br>Who: Everyone! (no partner required)<br>Cost: $12/pe
+ rson pre-pay on Venmo @heartlandswing until October 31st or $15/person cash
+  at the door<br>RSVP + Event Updates: <a href="https://fb.me/e/6biO46Aka">h
+ ttps://fb.me/e/6biO46Aka</a>
+LAST-MODIFIED:20240220T050705Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Halloween Swing Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20241207T010000Z
+DTEND:20241207T130000Z
+DTSTAMP:20240313T130600Z
+UID:6fkh0r6dp7et2vp0rbfhuulktp@google.com
+CREATED:20240220T050850Z
+DESCRIPTION:<br>Join us for our holiday dance on December 6th! Grab your fr
+ iends and your ugliest sweater and join us at Dance-a-Cross in WDM from 7:3
+ 0-10:00pm! Just $7/person\, and everyone is welcome! No partner required.<b
+ r><br>Date: December 6th<br>Lesson Time: 7:30-8:00pm<br>Dance Time: 8:00-10
+ :00pm<br>Location: Dance-a-Cross (1970 Grand Ave. #37\, West Des Moines\, I
+ A 50265)<br>Who: Everyone! (no partner required)<br>Cost: $7/person pre-pay
+  on Venmo @heartlandswing or cash at the door <br>RSVP + Event Updates: <a 
+ href="https://fb.me/e/9K3IRltmk">https://fb.me/e/9K3IRltmk</a>
+LAST-MODIFIED:20240220T050850Z
+LOCATION:Dance-a-Cross\, 1970 Grand Ave #37\, West Des Moines\, IA 50265\, 
+ USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Des Moines\, Iowa: Holiday Swing Dance
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART;VALUE=DATE:20240607
+DTEND;VALUE=DATE:20240610
+DTSTAMP:20240313T130600Z
+UID:nk5uiqvu6v1u69ferpugm9khr8@google.com
+CREATED:20240301T192346Z
+DESCRIPTION:More Info at: https://facebook.com/events/s/blues-at-the-bean-2
+ 024/24875704965409668/ \n\nBlues at the Bean: A Blues Exchange by Bluetopia
+  during the Chicago Blues Fest\n\nJune 7-9\, 2024\n\nLive Music across Chic
+ ago every day of the event.\n\nEvening + Late Night dances (17+ hours of da
+ ncing)\n___________________________________________________\n\nBluetopia ha
+ s been working hard over the last year to ramp up Blues dancing in Chicago 
+ post Pandemic\, and we're so excited to bring back a Blues Exchange weekend
+  to a city that is renowned for its Blues music.  Bluetopia has been hostin
+ g Chicago's longest running monthly Blues event for more than 15 years now.
+   We're interested in bringing more live Blues music\, education\, and work
+ shops to the Midwest Blues dance scene.    \n\nTICKETS ON SALE MARCH 15th\n
+ \nWe have decided to offer tiered pricing to keep this event accessible whi
+ le also working to build up our community.  Any additional funds earned bey
+ ond our break-even point will go to Bluetopia to support scholarships for o
+ ur community members in need\, growing our scene\, and to continue offering
+  new opportunities to dance.\n\nSuper Supporter: Help Bluetopia bring more 
+ Live Music and events to Chicago and the Midwest.  All funds over our Break
+ -Even price will go towards future workshops\, exchanges\, and live music s
+ ponsored by Bluetopia.\n\nCommunity Supporter: Help Bluetopia sponsor those
+  in our community that cannot afford to attend this event.\n\nBreak-Even: T
+ his is the pricing that would allow us to strictly cover costs for this eve
+ nt if all attendees were charged the same flat rate.\n\nScholarship/Financi
+ al Assitance: A limited number of passes will be available for folks in fin
+ ancial need. If this price still presents a barrier to your attendance cons
+ ider volunteering\, or email us at contact@chicagobluetopia.com.  We want y
+ ou (yes\, you) to be able to attend!\n\nTICKETS ON SALE MARCH 15th\n\nIf yo
+ u have any questions or concerns\, we'd love to hear them! Please email us 
+ at contact@chicagobluetopia.com.
+LAST-MODIFIED:20240301T192346Z
+LOCATION:Cloud Gate\, Chicago\, IL 60602\, USA
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:CHICAGO: Blues at the Bean
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

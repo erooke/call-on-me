@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block title %}Add an Event{% endblock %}
+{% block head %}
+<style>
+  .add-event__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .add-event__form button {
+    padding: 0.5rem;
+    border: 2px solid var(--page-background);
+    background-color: var(--content-background);
+    border-radius: 0.25rem;
+    box-shadow: rgba(149, 157, 165, 0.3) 0px 8px 24px;
+    cursor: pointer;
+  }
+
+  .add-event__form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .add-event__form-item {
+      align-items: stretch;
+    }
+  }
+
+  .add-event__form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .add-event__form-row > * {
+    flex-grow: 1;
+  }
+
+  .add-event__form-item input {
+    padding: 0.25rem;
+  }
+
+  .add-event__form-item-sugar {
+    display: none;
+  }
+
+  .add-event__form-item textarea {
+    align-self: stretch;
+    padding: 0.25rem;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<div>
+  <h1>Add an Event</h1>
+  <p>Fill out this form to submit an event to our <a href="/events.html">our event calendar.</a></p>
+  <form class="add-event__form">
+    <label class="add-event__form-item">
+      Event title:
+      <input type="text" name="title" required/>
+    </label>
+    <label class="add-event__form-item">
+      Event description:
+      <textarea rows="6" name="description" required></textarea>
+    </label>
+    <div class="add-event__form-row">
+      <label class="add-event__form-item">
+        Start date:
+        <input type="date" name="start" required/>
+      </label>
+      <label class="add-event__form-item">
+        End date (optional):
+        <input type="date" name="end" />
+      </label>
+    </div>
+    <div class="add-event__form-row">
+      <label class="add-event__form-item">
+        Your name:
+        <input type="text" name="name" required/>
+      </label>
+      <label class="add-event__form-item">
+        Your email:
+        <input type="email" name="email" required/>
+      </label>
+    </div>
+    <div>
+      Disclaimers:
+      <ul>
+        <li>
+          We only ask your name and email in case we need to contact you. They will not be displayed publicly.
+        </li>
+        <li>
+          There may be a small delay before the event shows up on the list.
+        </li>
+        <li>
+          We reserve the right to modify or delete the event after submission.
+        </li>
+      </ul>
+    </div>
+    <div class="add-event__form-item-sugar">
+      <label>
+        Your address:
+        <input type="email" name="address" />
+      </label>
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
