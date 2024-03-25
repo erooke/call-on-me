@@ -27,7 +27,7 @@ class _CsvEvent:
 
     @staticmethod
     def from_dict(d) -> typing.Optional["_CsvEvent"]:
-        if not d.get("Timestamp", None):
+        if not d.get("Timestamp", None) or d.get("Display In Site", None) != "TRUE":
             return None
 
         return _CsvEvent(
