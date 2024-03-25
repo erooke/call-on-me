@@ -100,12 +100,12 @@ def do_the_thing(use_local_events=False, upload=False):
 
     template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
-    with open(f"{out_dir}/events.html", "w+") as f:
-        template = template_env.get_template("event-list.html")
-        f.write(template.render(events=events))
+    with open(f"{out_dir}/swing.html", "w+") as f:
+        template = template_env.get_template("swing-index.html")
+        f.write(template.render(events=events, assets=assets))
 
     with open(f"{out_dir}/index.html", "w+") as f:
-        template = template_env.get_template("home.html")
+        template = template_env.get_template("events.html")
         f.write(template.render(events=events, assets=assets))
 
     with open(f"{out_dir}/add-event.html", "w+") as f:
