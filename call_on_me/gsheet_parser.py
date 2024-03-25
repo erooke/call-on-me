@@ -1,6 +1,7 @@
 import csv
 import dataclasses
 import io
+import typing
 import uuid
 from typing import Optional
 
@@ -10,7 +11,7 @@ import requests
 from .event import Event
 
 
-URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSoLhPSYQqlB2G-dBEjBLR7hFi6CWXkdqAchP2EcIt8AP6IorgTZYYT_ck4KbRvGfUJPw0P5LPduz4g/pub?output=csv"
+URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQPkGgjkwVujj70fFVeNjE1JSYZg5_x79YOYvReLNMRonBCGfp5kl1hFL5Au1NJZr0S7NoW7fiqvh0k/pub?output=csv"
 
 
 @dataclasses.dataclass
@@ -25,13 +26,16 @@ class _CsvEvent:
     location: Optional[str]
 
     @staticmethod
-    def from_dict(d):
+    def from_dict(d) -> typing.Optional["_CsvEvent"]:
+        if not d.get("Timestamp", None):
+            return None
+
         return _CsvEvent(
             timestamp=d.get("Timestamp"),
             title=d.get("Event Title"),
             description=d.get("Event Description"),
             start_date=d.get("Event Start Date"),
-            end_date=d.get("Event End Date (Optional)"),
+            end_date=d.get("Event End Date (optional)"),
             name=d.get("Your Name (will not be shared)"),
             email=d.get("Your Email (will not be shared)"),
             location=d.get("Event Location"),
@@ -39,7 +43,6 @@ class _CsvEvent:
 
 
 def _csv_event_to_event(csv_event: _CsvEvent) -> Event:
-
     start_date = arrow.get(csv_event.start_date, "M/D/YYYY").replace(
         tzinfo="America/Chicago"
     )
@@ -78,6 +81,6 @@ def parse_gsheet(event_csv: str, start_at: arrow.Arrow) -> list[Event]:
     io_like = io.StringIO(event_csv)
     lines = csv.DictReader(io_like)
     csv_events = list(map(_CsvEvent.from_dict, lines))
-    csv_events = [cv for cv in csv_events if not cv.title.startswith("TEST")]
+    csv_events = [cv for cv in csv_events if cv and not cv.title.startswith("TEST")]
     events = list(map(_csv_event_to_event, csv_events))
     return [e for e in events if e.start >= start_at]

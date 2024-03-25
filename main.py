@@ -57,15 +57,15 @@ def sync(out_dir: str):
     print(sync2)
 
 
-def do_the_thing(local=False):
-    out_dir = "out/" if local else S3_OUT_DIR
+def do_the_thing(use_local_events=False, upload=False):
+    out_dir = S3_OUT_DIR if upload else "out/"
     start_at = (
         arrow.now(tz="America/Chicago")
         # .replace(day=2)
         .replace(hour=17, minute=59).shift(days=-1)
     )
 
-    if local:
+    if use_local_events:
         with open("example-calendars/gsheet.csv") as f:
             csv_events = f.read()
     else:
@@ -89,7 +89,7 @@ def do_the_thing(local=False):
             asset.write(out_dir)
             assets[asset.key] = asset
 
-    if local:
+    if use_local_events:
         with open("example-calendars/travel.ics") as f:
             ical_events = f.read()
     else:
@@ -112,13 +112,13 @@ def do_the_thing(local=False):
         template = template_env.get_template("add-event.html")
         f.write(template.render(events=events))
 
-    if not local:
+    if upload:
         sync(out_dir)
 
 
 def handler(_, __):
-    do_the_thing(local=False)
+    do_the_thing(use_local_events=False, upload=True)
 
 
 if __name__ == "__main__":
-    do_the_thing(local=False)
+    do_the_thing(use_local_events=False, upload=False)
