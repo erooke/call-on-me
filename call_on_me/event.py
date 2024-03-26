@@ -19,7 +19,7 @@ class Event:
     start: arrow.Arrow
     end: Optional[arrow.Arrow]
     source: str
-    dance_type: str
+    dance_types: list[str]
 
     def start_date(self):
         return self.start.format("dddd, MMMM Do")

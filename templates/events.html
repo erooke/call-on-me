@@ -10,8 +10,33 @@
     list-style-type: none;
     margin-left: 0;
     padding-left: 0;
+    padding-top: 2rem;
+    border-top: thin solid var(--page-background);
+    margin-top: 1rem;
   }
 
+  .event-item:not(.event-item--last) {
+    border-bottom: thin solid var(--page-background);
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .event-item--hidden {
+    display: none !important;
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+    margin: 1rem 0;
+    border-color: var(--page-background);
+    user-select: none;
+  }
+
+  .event-filter-details {
+    margin: 1rem 0;
+  }
 </style>
 {% endblock %}
 {% block title %}Iowa City Dance Events{% endblock %}
@@ -21,11 +46,27 @@
   <div>If you would like to submit an event to this list, <a target="_blank" rel="noopener" href="https://forms.gle/L6e2R9LgS7bepEgEA">
     fill out our form!</a>
   </div>
-  <hr class="event-separator">
+  <details class="event-filter-details">
+    <summary>Filter Events</summary>
+    <form>
+      <fieldset>
+        <legend>Dance Type</legend>
+
+        {% for dance_type in filters['dance_types'] %}
+        <label class="event-filter">
+          <input name="dance-type--{{ dance_type | lower }}" type="checkbox" checked />
+
+          {{ dance_type | title }}
+        </label>
+        {% endfor %}
+      </fieldset>
+
+    </form>
+  </details>
 
   <ol class="event-list">
     {% for event in events %}
-    <li class="event-item">
+    <li class="event-item {% if loop.last %}event-item--last{% endif %}" data-dance-types="{{ ','.join(event.dance_types) }}">
       <div class="event-name">
 
         <em class="event-time">
@@ -45,10 +86,32 @@
       {% endif %}
       {{ event.description | safe }}
     </li>
-    {% if not loop.last %}
-    <hr class="event-separator">
-    {% endif %}
     {% endfor %}
   </ol>
+  <script>
+  const filter = () => {
+    const danceTypeCheckboxes = [...document.querySelectorAll('[name^=dance-type--')]
+    const enabledDanceTypes = danceTypeCheckboxes
+      .filter(it => it.checked)
+      .map(it => it.name.split('--')[1].toUpperCase());
+
+    const events = [...document.querySelectorAll('.event-item')]
+    let lastVisible;
+    events.forEach(event => {
+      const eventDanceTypes = event.dataset.danceTypes.split(',');
+      const enabled = enabledDanceTypes.some(type => eventDanceTypes.includes(type));
+      event.classList.toggle('event-item--hidden', !enabled);
+      event.classList.remove('event-item--last');
+      if (enabled) {
+        lastVisible = event;
+      }
+    })
+
+    lastVisible && lastVisible.classList.add('event-item--last');
+  }
+
+  const form = document.querySelector('form');
+  form.addEventListener('change', filter);
+  </script>
 </div>
 {% endblock %}

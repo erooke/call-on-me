@@ -94,9 +94,10 @@ def do_the_thing(use_local_events=False, upload=False):
             ical_events = f.read()
     else:
         ical_events = ical_parser.from_url(ICAL_URL)
-    events += ical_parser.parse_ical(ical_events, start_at)
 
+    events += ical_parser.parse_ical(ical_events, start_at)
     events.sort(key=lambda e: e.start)
+    filters = {"dance_types": ["SWING", "SALSA", "TANGO", "ZOUK", "WEST COAST"]}
 
     template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
@@ -106,7 +107,7 @@ def do_the_thing(use_local_events=False, upload=False):
 
     with open(f"{out_dir}/index.html", "w+") as f:
         template = template_env.get_template("events.html")
-        f.write(template.render(events=events, assets=assets))
+        f.write(template.render(events=events, assets=assets, filters=filters))
 
     with open(f"{out_dir}/add-event.html", "w+") as f:
         template = template_env.get_template("add-event.html")
@@ -121,4 +122,4 @@ def handler(_, __):
 
 
 if __name__ == "__main__":
-    do_the_thing(use_local_events=False, upload=False)
+    do_the_thing(use_local_events=True, upload=False)

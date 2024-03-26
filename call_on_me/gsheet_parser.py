@@ -24,12 +24,15 @@ class _CsvEvent:
     name: Optional[str]
     email: Optional[str]
     location: Optional[str]
+    dance_types: list[str]
 
     @staticmethod
     def from_dict(d) -> typing.Optional["_CsvEvent"]:
         if not d.get("Timestamp", None) or d.get("Display In Site", None) != "TRUE":
             return None
 
+        dance_types = d["Type of Dance"].split(", ")
+        dance_types = list(map(str.upper, dance_types))
         return _CsvEvent(
             timestamp=d.get("Timestamp"),
             title=d.get("Event Title"),
@@ -39,6 +42,7 @@ class _CsvEvent:
             name=d.get("Your Name (will not be shared)"),
             email=d.get("Your Email (will not be shared)"),
             location=d.get("Event Location"),
+            dance_types=dance_types,
         )
 
 
@@ -62,7 +66,7 @@ def _csv_event_to_event(csv_event: _CsvEvent) -> Event:
         description=description,
         start=start_date,
         end=end_date,
-        dance_type="TODO",
+        dance_types=csv_event.dance_types,
         source="gform",
         id=str(uuid.uuid4()),
     )

@@ -61,7 +61,7 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow) -> list[Event]:
             convert_start_end_dates(rw.begin, rw.end)[0],
             convert_start_end_dates(rw.begin, rw.end)[1],
             source="travel_calendar",
-            dance_type="lindy",
+            dance_types=["SWING"],
         )
         for rw in raw_events
     ]

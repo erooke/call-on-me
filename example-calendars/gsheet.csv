@@ -1,7 +1,4 @@
-Timestamp,Event Title,Event Description,Event Start Date,Event End Date (Optional),Your Name (will not be shared),Your Email (will not be shared),Event Location
-3/18/2024 16:43:04,TEST First Event,"here's an event
-
-with newlines
-
-and more newlines!!",3/19/2024,,Adam Hammes,adam@hammes.io,
-3/21/2024 17:08:50,TEST Event 2,lots of dancing,3/22/2024,3/24/2024,Definitely Not Krista,asdf@gmail.com,"115 Rosenberger Ave, Oskaloosa, IA"
+Timestamp,Display In Site,Event Title,Event Location,Event Description,Event Start Date,Event End Date (optional),Type of Dance,Is this event within an hour drive of Iowa City?,Your Name (will not be shared),Your Email (will not be shared)
+3/24/2024 23:13:35,TRUE,Balboa Beatdown,"Public Space 1 (South), Iowa city ",Come learn Balboa from the greats! Lessons every Thursday in April.,4/4/2024,4/25/2024,Swing,Yes,Adam Hammes,adam@hammes.io
+3/25/2024 13:19:35,TRUE,Swango,"The Greenhouse, Iowa City",Tango and swing dancing in a green cocktail bar.,4/18/2024,,"Swing, Tango",Yes,Adam Hammes,adam@hammes.io
+,FALSE,,,,,,,,,
