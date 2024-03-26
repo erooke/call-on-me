@@ -6,8 +6,8 @@ from typing import Optional
 import arrow
 
 
-def _is_same_day(start: arrow.Arrow, end: Optional[arrow.Arrow]):
-    return end is None or (end - start) < datetime.timedelta(hours=8)
+def start_of_day(date: arrow.Arrow) -> arrow.Arrow:
+    return date.replace(hour=0, minute=0, second=0, microsecond=0)
 
 
 @dataclasses.dataclass
@@ -21,8 +21,23 @@ class Event:
     source: str
     dance_types: list[str]
 
-    def start_date(self):
-        return self.start.format("dddd, MMMM Do")
+    def is_same_day(self) -> bool:
+        return self.end is None or (self.end - self.start) < datetime.timedelta(hours=8)
+
+    def days(self) -> list[arrow.Arrow]:
+        if self.is_same_day():
+            return [start_of_day(self.start)]
+
+        days = []
+        current = start_of_day(self.start)
+        while current < self.end:
+            days.append(current)
+            current = current.shift(days=+1)
+
+        return days
+
+    def formatted_dates(self) -> list[str]:
+        return [d.format("YYYY-MM-DD") for d in self.days()]
 
     def maps_link(self) -> str:
         base_link = "https://www.google.com/maps/search/?"
@@ -30,7 +45,7 @@ class Event:
         return base_link + urllib.parse.urlencode(params)
 
     def print_date(self):
-        if _is_same_day(self.start, self.end):
+        if self.is_same_day():
             return self.start.format("MMMM Do")
         elif self.start.month == self.end.month:
             start = self.start.format("MMMM Do")
