@@ -7,8 +7,8 @@
 {% block title %}Iowa City Dance Events{% endblock %}
 {% block content %}
 <div class="event-list">
-  <h1>Iowa City Dance Events</h1>
-  <div>If you would like to submit an event to this list, <a target="_blank" rel="noopener" href="https://forms.gle/L6e2R9LgS7bepEgEA">
+  <h1>Calendar</h1>
+  <div style="display: none;">If you would like to submit an event to this list, <a target="_blank" rel="noopener" href="https://forms.gle/L6e2R9LgS7bepEgEA">
     fill out our form!</a>
   </div>
   <details class="event-filter-details">
@@ -130,7 +130,12 @@
   }
 
   const form = document.querySelector('form');
-  form.addEventListener('change', filter);
+  form.addEventListener('change', e => {
+    const checkboxValues = danceTypeCheckboxes().map(box => ([box.name.split('--')[1], box.checked]))
+    const filterObj = Object.fromEntries(checkboxValues);
+    localStorage.setItem('danceFilterState', JSON.stringify(filterObj));
+    filter()
+  });
 
   const dayButtons = [...document.querySelectorAll('.calendar__day-select')];
   dayButtons.forEach(elem => {
@@ -143,6 +148,14 @@
       filter();
     });
   });
+
+  const filterState = JSON.parse(localStorage.getItem('danceFilterState'))
+  Object.entries(filterState).forEach(([name, value]) => {
+    const inputName = `dance-type--${name}`
+    document.getElementsByName(inputName)[0].checked = value
+  })
+
+  filter();
 
   </script>
 </div>
