@@ -33,7 +33,7 @@
           margin: 0 auto;
           background: var(--content-background);
           border-radius: 1rem;
-          padding: 1rem 2rem 2rem;
+          padding: 1rem;
         }
 
         a {
@@ -105,8 +105,55 @@
         .event-name svg {
           height: 1rem;
         }
-
     </style>
+    <style>
+      {% include 'base-styles.css' %}
+    </style>
+    
   </head>
-  <body>{% block content %}{% endblock %}</body>
+  <body>
+  <div class="modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content">
+      <div class="modal__close-container">
+        <button class="modal__close" >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <h3>Events:</h3>
+      <ul>
+        <li><a href="/">Calendar</a></li>
+        <li><a target="_blank" rel="noopener" href="https://forms.gle/L6e2R9LgS7bepEgEA">Add an Event</a></li>
+      </ul>
+      <h3>Learn more about:</h3>
+      <ul>
+        <li><a href="/swing.html">Swing Dance</a></li>
+        <li><a href="">Zouk</a></li>
+        <li><a href="">Salsa / Bachata</a></li>
+        <li><a href="">Tango</a></li>
+        <li><a href="">West Coast Swing</a></li>
+        <li><a href="">Ballroom</a></li>
+        <li><a href="">Line Dancing</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navigation">
+    <button class="navigation__button">
+      {% include 'hamburger.svg' %}
+    </button>
+    <div>Iowa City Dance</div>
+  </div>
+  {% block content %}{% endblock %}
+  <script>
+    const modal = () => document.querySelector('.modal')
+    const closeModal = () => modal().classList.remove('modal--open');
+    const openModal = () => modal().classList.add('modal--open');
+
+    document.querySelector('.navigation__button').addEventListener('click', openModal);
+    [...document.querySelectorAll('.modal__backdrop, .modal__close')].forEach(e => e.addEventListener('click', closeModal))
+
+  </script>
+  </body>
 </html>

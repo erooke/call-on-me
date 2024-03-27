@@ -3,7 +3,7 @@ from typing import Optional
 
 import arrow
 
-from call_on_me.event import Event, start_of_day
+from call_on_me.event import Event
 
 
 @dataclasses.dataclass
