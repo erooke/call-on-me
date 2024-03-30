@@ -66,6 +66,8 @@
     height: 1.75rem;
 }
 
-h1 {
-    margin: 0.5rem 0;
+@media screen and (max-width: 600px) {
+    h1 {
+        margin: 0.5rem 0;
+    }
 }
