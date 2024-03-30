@@ -23,7 +23,7 @@
         }
 
         body {
-          padding: 2rem;
+          padding: 1rem;
           margin: 0 auto;
 
           display: flex;
@@ -33,7 +33,12 @@
           margin: 0 auto;
           background: var(--content-background);
           border-radius: 1rem;
-          padding: 1rem;
+        }
+
+        @media screen and (min-width: 400px) {
+          body {
+            padding: 2rem;
+          }
         }
 
         a {
