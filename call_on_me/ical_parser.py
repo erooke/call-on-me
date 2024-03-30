@@ -48,7 +48,7 @@ def _process_html(html: str) -> str:
     return a
 
 
-def parse_ical(raw_ical: str, start_at: arrow.Arrow) -> list[Event]:
+def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Event]:
     calendar = ics.Calendar(raw_ical)
     event_iterator = calendar.timeline.start_after(start_at)
     raw_events = list(itertools.islice(event_iterator, 20))
@@ -61,7 +61,7 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow) -> list[Event]:
             convert_start_end_dates(rw.begin, rw.end)[0],
             convert_start_end_dates(rw.begin, rw.end)[1],
             source="travel_calendar",
-            dance_types=["SWING"],
+            dance_types=[dance_type],
         )
         for rw in raw_events
     ]

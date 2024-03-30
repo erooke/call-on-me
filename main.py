@@ -10,7 +10,10 @@ from call_on_me import ical_parser, gsheet_parser, image_assets, event_list_cont
 from call_on_me.file_asset import FileAsset
 from call_on_me.event import start_of_day
 
-ICAL_URL = "https://calendar.google.com/calendar/ical/5262e85049fae4cd0e93fecf91b6686f5c6c1c4f6a8774619c96d72202783b3e%40group.calendar.google.com/public/basic.ics"
+TRAVEL_EVENTS_ICAL_URL = "https://calendar.google.com/calendar/ical/5262e85049fae4cd0e93fecf91b6686f5c6c1c4f6a8774619c96d72202783b3e%40group.calendar.google.com/public/basic.ics"
+LOCAL_EVENTS_ICAL_URL = "https://calendar.google.com/calendar/ical/danceiowacity%40gmail.com/public/basic.ics"
+
+BALLROOM_ICAL_URL = """https://calendar.google.com/calendar/ical/corridordance%40gmail.com/public/basic.ics"""
 
 S3_OUT_DIR = "/tmp/out/"
 
@@ -92,11 +95,20 @@ def do_the_thing(use_local_events=False, upload=False):
 
     if use_local_events:
         with open("example-calendars/travel.ics") as f:
-            ical_events = f.read()
+            ical_calendars = [(f.read(), "SWING")]
     else:
-        ical_events = ical_parser.from_url(ICAL_URL)
+        ical_calendars = [
+            (ical_parser.from_url(LOCAL_EVENTS_ICAL_URL), "SWING"),
+            (ical_parser.from_url(BALLROOM_ICAL_URL), "BALLROOM"),
+        ]
 
-    events += ical_parser.parse_ical(ical_events, start_at)
+    for ical, dance_type in ical_calendars:
+        events += ical_parser.parse_ical(ical, start_at, dance_type)
+
+    for event in events:
+        if 'salsa' in event.name.lower():
+            event.dance_types = ['SALSA']
+
     events.sort(key=lambda e: e.start)
     filters = {
         "dance_types": {
