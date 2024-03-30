@@ -19,7 +19,7 @@
 
         {% for dance_type, display_name in filters['dance_types'].items() %}
         <label class="event-filter" data-dance-type="{{ dance_type }}">
-          <input name="dance-type--{{ dance_type | lower }}" type="checkbox" checked />
+          <input name="dance-type--{{ dance_type | lower }}" type="checkbox" checked >
           {{ display_name }}
         </label>
         {% endfor %}
@@ -59,11 +59,11 @@
     >
       <button class="calendar__day-select" data-day="{{ day.format('YYYY-MM-DD') }}">
       {{ day.day }}
-        <div class="calendar__event-markers">
+        <span class="calendar__event-markers">
           {% for dance_type in event_context.dance_types_on_day(day) %}
-          <div class="calendar__event-marker" data-dance-type="{{ dance_type }}"></div>
+          <span class="calendar__event-marker" data-dance-type="{{ dance_type }}"></span>
           {% endfor %}
-        </div>
+        </span>
       </button>
     </li>
     {% endfor %}
