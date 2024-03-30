@@ -1,10 +1,10 @@
-import itertools
+import datetime
 import re
 
 import arrow
 import lxml.etree
 import lxml.html
-import ics
+import ical.calendar_stream
 import requests
 
 from .event import Event
@@ -49,19 +49,34 @@ def _process_html(html: str) -> str:
 
 
 def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Event]:
-    calendar = ics.Calendar(raw_ical)
-    event_iterator = calendar.timeline.start_after(start_at)
-    raw_events = list(itertools.islice(event_iterator, 20))
-    return [
-        Event(
-            rw.uid,
-            rw.name,
-            _process_html(rw.description),
-            rw.location,
-            convert_start_end_dates(rw.begin, rw.end)[0],
-            convert_start_end_dates(rw.begin, rw.end)[1],
-            source="travel_calendar",
-            dance_types=[dance_type],
+    calendar = ical.calendar_stream.IcsCalendarStream.calendar_from_ics(raw_ical)
+
+    raw_events = calendar.timeline.active_after(
+        datetime.date(start_at.year, start_at.month, start_at.day)
+    )
+
+    events = []
+    count = 0
+    for rw in raw_events:
+        count += 1
+
+        if count > 100:
+            break
+
+        start = arrow.get(rw.dtstart)
+        end = arrow.get(rw.dtend)
+
+        events.append(
+            Event(
+                rw.uid,
+                rw.summary,
+                _process_html(rw.description),
+                rw.location,
+                convert_start_end_dates(start, end)[0],
+                convert_start_end_dates(start, end)[1],
+                source="travel_calendar",
+                dance_types=[dance_type],
+            )
         )
-        for rw in raw_events
-    ]
+
+    return events

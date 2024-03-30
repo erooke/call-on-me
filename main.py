@@ -106,8 +106,8 @@ def do_the_thing(use_local_events=False, upload=False):
         events += ical_parser.parse_ical(ical, start_at, dance_type)
 
     for event in events:
-        if 'salsa' in event.name.lower():
-            event.dance_types = ['SALSA']
+        if "salsa" in event.name.lower():
+            event.dance_types = ["SALSA"]
 
     events.sort(key=lambda e: e.start)
     filters = {
@@ -180,4 +180,4 @@ def handler(_, __):
 
 
 if __name__ == "__main__":
-    do_the_thing(use_local_events=True, upload=False)
+    do_the_thing(use_local_events=False, upload=False)
