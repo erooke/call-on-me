@@ -30,6 +30,10 @@ def _linkify(match: re.Match) -> str:
     return f' <a href="{link}">{link}</a> '
 
 
+def make_id(e):
+    return e.uid + str(e.start)
+
+
 def _process_html(html: str) -> str:
     # don't judge me
     html = html.strip().removeprefix("<br>")
@@ -57,8 +61,14 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
 
     events = []
     count = 0
+    ids = set()
     for rw in raw_events:
         count += 1
+
+        if make_id(rw) in ids:
+            continue
+
+        ids.add(make_id(rw))
 
         if count > 100:
             break
