@@ -154,10 +154,12 @@
   });
 
   const filterState = JSON.parse(localStorage.getItem('danceFilterState'))
-  Object.entries(filterState).forEach(([name, value]) => {
-    const inputName = `dance-type--${name}`
-    document.getElementsByName(inputName)[0].checked = value
-  })
+  if (filterState) {
+    Object.entries(filterState).forEach(([name, value]) => {
+      const inputName = `dance-type--${name}`
+      document.getElementsByName(inputName)[0].checked = value
+    })
+  }
 
   filter();
 
