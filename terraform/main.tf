@@ -9,6 +9,10 @@ terraform {
   required_version = ">= 1.2.0"
 }
 
+variable "domain" {
+  default = "danceiowacity.com"
+}
+
 provider "aws" {
   region = "us-east-2"
 }
@@ -76,8 +80,14 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = "arn:aws:acm:us-east-1:698062986382:certificate/6378af9a-cd59-43e3-8d8f-a2b2e4a06941"
+    ssl_support_method = "sni-only"
   }
+
+  aliases = [
+    "danceiowacity.com",
+    "www.danceiowacity.com"
+  ]
 
   restrictions {
     geo_restriction {
@@ -181,4 +191,29 @@ resource "aws_lambda_permission" "allow_events_bridge_to_run_lambda" {
     action = "lambda:InvokeFunction"
     function_name = aws_lambda_function.call-on-me-updater-cron.function_name
     principal = "events.amazonaws.com"
+}
+
+resource "aws_route53_zone" "main" {
+  name = "${var.domain}"
+}
+
+resource "aws_route53_record" "root_domain" {
+  zone_id = aws_route53_zone.main.zone_id
+  name = var.domain
+  type = "A"
+
+  alias {
+    name = aws_cloudfront_distribution.distribution.domain_name
+    zone_id = aws_cloudfront_distribution.distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+resource "aws_route53_record" "www-dev" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "www"
+  type    = "CNAME"
+  ttl     = 5
+
+  records        = ["danceiowacity.com"]
 }
