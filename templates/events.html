@@ -80,7 +80,10 @@
 
         <em class="event-time">
           {% include 'clock.svg' %}
-          {{ event.print_date() }}
+          {{- event.print_date() -}}
+          {% if event.print_time() %}
+          {{- ', ' + event.print_time() -}}
+          {% endif %}
         </em>
         <strong>{{ event.name }}</strong>
       </div>

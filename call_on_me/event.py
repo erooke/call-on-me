@@ -55,3 +55,17 @@ class Event:
             start = self.start.format("MMMM Do")
             end = self.end.format("MMMM Do")
             return f"{start} - {end}"
+
+    def print_time(self):
+        if not self.is_same_day():
+            return ""
+
+        if self.start.hour == 0 and self.start.minute == 0:
+            return ""
+
+        time_format = "h:mma"
+        string = self.start.format(time_format)
+        if not self.end:
+            return string
+
+        return string + " - " + self.end.format(time_format)
