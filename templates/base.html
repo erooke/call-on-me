@@ -10,8 +10,12 @@
     {% block head %}{% endblock %}
     <style>
         :root {
-          --page-background:  #2A344D;
-          --content-background:  #fee5b8;
+        --page-background: #e2b99e;
+          --page-background: #DFD7D1;
+          --page-background: #becce3;
+          --text-color: #4D4C4B;
+          --accent-color: #0066b2;
+          --content-background:  white;
         }
         html {
           background: var(--page-background);
@@ -20,6 +24,7 @@
           flex-direction: column;
           word-break: break-word;
           padding: 1rem;
+          color:
         }
 
 
@@ -32,8 +37,8 @@
 
           max-width: 60ch;
           margin: 0 auto;
-          background: var(--content-background);
           border-radius: 1rem;
+          background-color: var(--content-background);
         }
 
         @media screen and (min-width: 400px) {
@@ -43,8 +48,7 @@
         }
 
         a {
-          color: #00308F;
-          color: #0066b2;
+          color: var(--accent-color);
         }
 
         hr {
