@@ -35,6 +35,8 @@ def make_id(e):
 
 
 def _process_html(html: str) -> str:
+    if not html:
+        return ""
     # don't judge me
     html = html.strip().removeprefix("<br>")
     html = f" {html} "
