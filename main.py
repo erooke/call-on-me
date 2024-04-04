@@ -1,3 +1,4 @@
+import concurrent.futures
 import glob
 import pathlib
 import shutil
@@ -9,6 +10,7 @@ import jinja2
 from call_on_me import ical_parser, gsheet_parser, image_assets, event_list_context
 from call_on_me.file_asset import FileAsset
 from call_on_me.event import start_of_day
+
 
 TRAVEL_EVENTS_ICAL_URL = "https://calendar.google.com/calendar/ical/5262e85049fae4cd0e93fecf91b6686f5c6c1c4f6a8774619c96d72202783b3e%40group.calendar.google.com/public/basic.ics"
 LOCAL_EVENTS_ICAL_URL = "https://calendar.google.com/calendar/ical/danceiowacity%40gmail.com/public/basic.ics"
@@ -98,11 +100,8 @@ def do_the_thing(use_local_events=False, upload=False):
         with open("example-calendars/travel.ics") as f:
             ical_calendars = [(f.read(), "SWING")]
     else:
-        ical_calendars = [
-            (ical_parser.from_url(LOCAL_EVENTS_ICAL_URL), "SWING"),
-            (ical_parser.from_url(BALLROOM_ICAL_URL), "BALLROOM"),
-            (ical_parser.from_url(ZOUK_ICAL_URL), "ZOUK"),
-        ]
+        ical_calendars = fetch_calendars()
+
     for ical, dance_type in ical_calendars:
         events += ical_parser.parse_ical(ical, start_at, dance_type)
 
@@ -174,6 +173,19 @@ def do_the_thing(use_local_events=False, upload=False):
 
     if upload:
         sync(out_dir)
+
+
+def fetch_calendars():
+    ical_calendar_config = [
+        (LOCAL_EVENTS_ICAL_URL, "SWING"),
+        (BALLROOM_ICAL_URL, "BALLROOM"),
+        (ZOUK_ICAL_URL, "ZOUK"),
+    ]
+    urls = [r[0] for r in ical_calendar_config]
+    dance_types = [r[1] for r in ical_calendar_config]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+        ical_calendars = zip(executor.map(ical_parser.from_url, urls), dance_types)
+    return ical_calendars
 
 
 def handler(_, __):
