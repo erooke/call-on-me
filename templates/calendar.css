@@ -91,7 +91,7 @@
 }
 
 .calendar__day-select--selected {
-  border-color: var(--page-background);
+  border-color: currentColor;
 }
 
 .calendar__event-markers {
