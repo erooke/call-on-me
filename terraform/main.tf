@@ -176,7 +176,7 @@ resource "aws_lambda_function" "call-on-me-updater-cron" {
 resource "aws_cloudwatch_event_rule" "schedule" {
     name = "schedule"
     description = "Schedule for Lambda Function"
-    schedule_expression = "rate(2 minutes)"
+    schedule_expression = "rate(5 minutes)"
 }
 
 resource "aws_cloudwatch_event_target" "schedule_lambda" {
