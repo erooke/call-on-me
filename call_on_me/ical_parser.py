@@ -50,8 +50,10 @@ def _process_html(html: str) -> str:
             elem.set("target", "_blank")
             elem.set("rel", "noopener")
 
-    a = lxml.etree.tostring(root, encoding="unicode", method="xml", pretty_print=True)
-    return a
+    a: str = lxml.etree.tostring(
+        root, encoding="unicode", method="xml", pretty_print=True
+    )
+    return a.removeprefix("<div>").removesuffix("</div>")
 
 
 def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Event]:

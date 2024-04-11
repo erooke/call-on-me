@@ -123,6 +123,19 @@
   padding-top: 1rem;
 }
 
+.event-description > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+.event-description ul, .event-description ol {
+    list-style-type: disc;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+
 .event-item:not(.event-item--last) {
   border-bottom: thin solid var(--page-background);
   margin-bottom: 2rem;

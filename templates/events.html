@@ -96,7 +96,9 @@
         </a>
       </div>
       {% endif %}
-      {{ event.description | safe }}
+      <div class="event-description">
+        {{ event.description | safe }}
+      </div>
     </li>
     {% endfor %}
   </ol>
