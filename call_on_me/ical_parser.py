@@ -80,12 +80,16 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
         start = arrow.get(rw.dtstart)
         end = arrow.get(rw.dtend)
 
+        location = rw.location
+        if isinstance(location, str):
+            location = location.removesuffix(", USA")
+
         events.append(
             Event(
                 rw.uid,
                 rw.summary,
                 _process_html(rw.description),
-                rw.location,
+                location,
                 convert_start_end_dates(start, end)[0],
                 convert_start_end_dates(start, end)[1],
                 source="travel_calendar",
