@@ -78,7 +78,8 @@ def file_csv(path: str) -> str:
 
 
 def gsheet_csv():
-    return requests.get(URL).text
+    response = requests.get(URL)
+    return response.content.decode("utf-8")
 
 
 def parse_gsheet(event_csv: str, start_at: arrow.Arrow) -> list[Event]:
