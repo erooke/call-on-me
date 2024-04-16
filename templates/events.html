@@ -54,7 +54,7 @@
     <li>Sa</li>
     {% for day in event_context.events_by_day %}
     <li
-        {% if loop.first %}style="grid-column-start: {{ (day.weekday() + 2) % 7 }}"{% endif %}
+        {% if loop.first %}style="grid-column-start: {{ (day.weekday() + 1) % 7 + 1 }}"{% endif %}
         class="calendar__date"
     >
       <button class="calendar__day-select" data-day="{{ day.format('YYYY-MM-DD') }}">
