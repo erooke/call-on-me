@@ -99,6 +99,8 @@ def do_the_thing(use_local_events=False, upload=False):
             asset.write(out_dir)
             assets[asset.key] = asset
 
+    shutil.copy2("templates/share-image.jpg", "out/assets")
+
     if use_local_events:
         with open("example-calendars/travel.ics") as f:
             ical_calendars = [(f.read(), "SWING")]
