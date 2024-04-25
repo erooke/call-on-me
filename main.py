@@ -69,11 +69,7 @@ def sync(out_dir: str):
 
 def do_the_thing(use_local_events=False, upload=False):
     out_dir = S3_OUT_DIR if upload else "out/"
-    start_at = (
-        arrow.now(tz="America/Chicago")
-        # .replace(day=2)
-        .replace(hour=17, minute=59).shift(days=-1)
-    )
+    start_at = start_of_day(arrow.now(tz="America/Chicago")).replace(day=1)
 
     if use_local_events:
         with open("example-calendars/gsheet.csv") as f:
