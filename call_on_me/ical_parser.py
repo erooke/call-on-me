@@ -72,6 +72,9 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
         if make_id(rw) in ids:
             continue
 
+        if not rw.location and not rw.description:
+            continue
+
         ids.add(make_id(rw))
 
         if count > 100:
