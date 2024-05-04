@@ -87,6 +87,8 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
         if isinstance(location, str):
             location = location.removesuffix(", USA")
 
+            if "des moines" in rw.location.lower():
+                continue
         events.append(
             Event(
                 rw.uid,
