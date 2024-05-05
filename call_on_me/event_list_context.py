@@ -3,7 +3,7 @@ from typing import Optional
 
 import arrow
 
-from call_on_me.event import Event
+from call_on_me.event import Event, start_of_day
 
 
 @dataclasses.dataclass
@@ -21,6 +21,10 @@ class EventListContext:
     def dance_types_on_day(self, day: arrow.Arrow) -> set[str]:
         events = self.events_by_day[day]
         return set(dt for event in events for dt in event.dance_types)
+
+    def preselected_day(self) -> str:
+        today = start_of_day(arrow.now("America/Chicago"))
+        return today.format("YYYY-MM-DD")
 
 
 def build_context(

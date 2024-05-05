@@ -45,7 +45,7 @@
     {% endif %}
   </div>
 
-  <ol class="calendar">
+  <ol class="calendar" {% if event_context.preselected_day() %}data-selected-day="{{ event_context.preselected_day() }}"{% endif %}>
     <li>Su</li>
     <li>Mo</li>
     <li>Tu</li>
@@ -108,6 +108,12 @@
 
   const filter = () => {
     const selectedDay = document.querySelector('.calendar').dataset.selectedDay;
+    if (selectedDay) {
+      document
+        .querySelector(`.calendar__day-select[data-day="${selectedDay}"]`)
+        .classList
+        .add('calendar__day-select--selected')
+    }
     const enabledDanceTypes = danceTypeCheckboxes()
       .filter(it => it.checked)
       .map(it => it.name.split('--')[1].toUpperCase());
