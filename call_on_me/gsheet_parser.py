@@ -33,6 +33,11 @@ class _CsvEvent:
 
         dance_types = d["Type of Dance"].split(", ")
         dance_types = list(map(str.upper, dance_types))
+        replacements = {
+            "SALSA/BACHATA": "SALSA",
+        }
+        dance_types = {replacements.get(d, d) for d in dance_types}
+
         return _CsvEvent(
             timestamp=d.get("Timestamp"),
             title=d.get("Event Title"),
