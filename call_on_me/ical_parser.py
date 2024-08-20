@@ -41,8 +41,7 @@ def _process_html(html: str) -> str:
     html = html.strip().removeprefix("<br>")
     html = f" {html} "
     html = re.sub(" https://.* ", _linkify, html)
-    html = html.replace("\n\n", "<br><br>")
-    html = re.sub("(<br>)+", "<br><br>", html)
+    html = html.replace("\n", "<br>")
 
     root = lxml.html.fragment_fromstring(html, create_parent="div")
     for elem in root.iter():
