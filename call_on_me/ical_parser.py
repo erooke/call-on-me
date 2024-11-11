@@ -42,6 +42,8 @@ def _process_html(html: str) -> str:
     html = f" {html} "
     html = re.sub(" https://.* ", _linkify, html)
     html = html.replace("\n", "<br>")
+    # The html has a lot of empty bold tags that don't parse correctly in the browser
+    html = html.replace("<b></b>", "").replace("<b>\n</b>", "")
 
     root = lxml.html.fragment_fromstring(html, create_parent="div")
     for elem in root.iter():
