@@ -96,6 +96,15 @@ def do_the_thing(use_local_events=False, upload=False):
             assets[asset.key] = asset
 
     shutil.copy2("templates/share-image.jpg", out_dir + "assets")
+    template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
+
+    with open(f"{out_dir}/sweetcorn.html", "w+") as f:
+        template = template_env.get_template("sweetcorn.html")
+        f.write(template.render(events=events, assets=assets))
+
+    with open(f"{out_dir}/swing.html", "w+") as f:
+        template = template_env.get_template("swing-index.html")
+        f.write(template.render(events=events, assets=assets))
 
     if use_local_events:
         with open("example-calendars/travel.ics") as f:
@@ -125,8 +134,6 @@ def do_the_thing(use_local_events=False, upload=False):
         }
     }
 
-    template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
-
     months_to_build = 12
     current = start_of_day(arrow.now(tz="America/Chicago")).replace(day=1)
 
@@ -134,10 +141,6 @@ def do_the_thing(use_local_events=False, upload=False):
     for i in range(12):
         months.append((current.year, current.month))
         current = current.shift(months=+1)
-
-    with open(f"{out_dir}/swing.html", "w+") as f:
-        template = template_env.get_template("swing-index.html")
-        f.write(template.render(events=events, assets=assets))
 
     for index, (year, month) in enumerate(months, start=1):
         is_first = index == 1
