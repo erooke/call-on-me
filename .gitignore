@@ -2,6 +2,9 @@
 
 out/
 
+# Direnv metadata
+.direnv
+
 # Secrets
 secrets.env
 
