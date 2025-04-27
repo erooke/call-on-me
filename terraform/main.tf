@@ -13,6 +13,10 @@ variable "domain" {
   default = "danceiowacity.com"
 }
 
+ variable "other_domain" {
+   default = "iowacityswing.com"
+ }
+
 provider "aws" {
   region = "us-east-2"
 }
@@ -80,13 +84,15 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "arn:aws:acm:us-east-1:698062986382:certificate/6378af9a-cd59-43e3-8d8f-a2b2e4a06941"
+    acm_certificate_arn = "arn:aws:acm:us-east-1:698062986382:certificate/d5b6fc2e-56c1-46b4-98bf-19b2e62ec8cf"
     ssl_support_method = "sni-only"
   }
 
   aliases = [
     "danceiowacity.com",
-    "www.danceiowacity.com"
+    "www.danceiowacity.com",
+    "iowacityswing.com",
+    "www.iowacityswing.com",
   ]
 
   restrictions {
@@ -197,6 +203,10 @@ resource "aws_route53_zone" "main" {
   name = "${var.domain}"
 }
 
+resource "aws_route53_zone" "secondary" {
+  name = "${var.other_domain}"
+}
+
 resource "aws_route53_record" "root_domain" {
   zone_id = aws_route53_zone.main.zone_id
   name = var.domain
@@ -209,8 +219,28 @@ resource "aws_route53_record" "root_domain" {
   }
 }
 
+resource "aws_route53_record" "secondary_domain" {
+  zone_id = aws_route53_zone.secondary.zone_id
+  name = var.other_domain
+  type = "A"
+
+  alias {
+    name = aws_cloudfront_distribution.distribution.domain_name
+    zone_id = aws_cloudfront_distribution.distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
 resource "aws_route53_record" "www-dev" {
   zone_id = aws_route53_zone.main.zone_id
+  name    = "www"
+  type    = "CNAME"
+  ttl     = 5
+
+  records        = ["danceiowacity.com"]
+}
+resource "aws_route53_record" "www-dev-secondary" {
+  zone_id = aws_route53_zone.secondary.zone_id
   name    = "www"
   type    = "CNAME"
   ttl     = 5
