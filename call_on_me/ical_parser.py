@@ -90,6 +90,10 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
 
             if "des moines" in rw.location.lower():
                 continue
+
+            if "sunday zouk" in rw.summary.lower():
+                continue
+
         events.append(
             Event(
                 rw.uid,
