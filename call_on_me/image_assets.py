@@ -24,7 +24,7 @@ class ImageAsset:
     def _resized_name(self, img: Image):
         basename = pathlib.Path(self.original_name).stem
         hashed = hashlib.sha256(img.tobytes()).hexdigest()[:8]
-        return f"assets/{basename}/{basename}-{img.size[0]}w.{hashed}.webp"
+        return f"/assets/{basename}/{basename}-{img.size[0]}w.{hashed}.webp"
 
     def tag(self, **kwargs) -> str:
         srcset = [

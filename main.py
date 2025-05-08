@@ -98,7 +98,8 @@ def do_the_thing(use_local_events=False, upload=False):
     shutil.copy2("templates/share-image.jpg", out_dir + "assets")
     template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
-    with open(f"{out_dir}/sweetcorn.html", "w+") as f:
+    pathlib.Path(f"{out_dir}/sweetcorn").mkdir(parents=True, exist_ok=True)
+    with open(f"{out_dir}/sweetcorn/index.html", "w+") as f:
         template = template_env.get_template("sweetcorn.html")
         f.write(template.render(events=events, assets=assets))
 
