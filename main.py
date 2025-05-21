@@ -1,5 +1,4 @@
 import concurrent.futures
-import glob
 import pathlib
 import shutil
 import subprocess
@@ -21,7 +20,7 @@ TANGO_ICAL_URL = "https://calendar.google.com/calendar/ical/21e7dd52f1a988e3fac5
 
 BALLROOM_ICAL_URL = """https://calendar.google.com/calendar/ical/corridordance%40gmail.com/public/basic.ics"""
 
-S3_OUT_DIR = "/tmp/out/"
+S3_OUT_DIR = pathlib.Path("/tmp/out")
 
 
 def sync(out_dir: str):
@@ -68,7 +67,7 @@ def sync(out_dir: str):
 
 
 def do_the_thing(use_local_events=False, upload=False):
-    out_dir = S3_OUT_DIR if upload else "out/"
+    out_dir = S3_OUT_DIR if upload else pathlib.Path("out")
     start_at = start_of_day(arrow.now(tz="America/Chicago")).replace(day=1)
 
     if use_local_events:
@@ -83,24 +82,28 @@ def do_the_thing(use_local_events=False, upload=False):
     pathlib.Path(f"{out_dir}/assets").mkdir(parents=True, exist_ok=True)
 
     assets = {}
-    for file_path_str in glob.iglob("templates/assets/*"):
-        path = pathlib.Path(file_path_str)
-        if path.suffix in [".jpg", ".jpeg", ".webp"]:
-            key = path.stem
-            image_asset = image_assets.resize(str(path))
+    asset_path = pathlib.Path("templates/assets")
+    for path in asset_path.rglob("*"):
+
+        if path.is_dir():
+            continue
+
+        if path.suffix in [".jpg", ".jpeg", ".webp", ".png"]:
+            key = str(path.relative_to(asset_path).parent / path.stem)
+            image_asset = image_assets.resize(path)
             assets[key] = image_asset
             image_asset.write(out_dir)
         else:
-            asset = FileAsset(file_path_str)
+            asset = FileAsset(path)
             asset.write(out_dir)
             assets[asset.key] = asset
 
-    shutil.copy2("templates/share-image.jpg", out_dir + "assets")
+    shutil.copy2("templates/share-image.jpg", out_dir / "assets")
     template_env = jinja2.Environment(loader=jinja2.FileSystemLoader("templates"))
 
     pathlib.Path(f"{out_dir}/sweetcorn").mkdir(parents=True, exist_ok=True)
     with open(f"{out_dir}/sweetcorn/index.html", "w+") as f:
-        template = template_env.get_template("sweetcorn.html")
+        template = template_env.get_template("sweetcorn/index.html")
         f.write(template.render(events=events, assets=assets))
 
     with open(f"{out_dir}/swing.html", "w+") as f:
@@ -160,7 +163,7 @@ def do_the_thing(use_local_events=False, upload=False):
             f"index.html" if is_first else f"{year}/{padded_month}/index.html"
         )
 
-        file_path = out_dir + relative_path
+        file_path = out_dir / relative_path
         pathlib.Path(file_path).parent.mkdir(parents=True, exist_ok=True)
         with open(file_path, "w+") as f:
             template = template_env.get_template("events.html")

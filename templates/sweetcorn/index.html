@@ -1,0 +1,104 @@
+<!doctype html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@400;700&family=Yellowtail&display=swap" rel="stylesheet">
+    <style>{% include 'assets/sweetcorn/style.css' %}</style>
+		<title>Sweet Corn Swingout</title>
+	</head>
+	<body>
+		<header class="center main-header">
+			<img class="logo" src="{{assets['assets/sweetcorn/logo.svg'].absolute_path}}">
+			<nav class="main-nav">
+				<ul class="nav-list ff-primary-heading color-primary fs-700">
+					<li><a class="nav-link" href="#schedule">Schedule</a><li>
+					<li><a class="nav-link" href="#passes">Passes</a><li>
+					<li><a class="nav-link" href="#instructors">Instructors</a><li>
+					<li><a class="nav-link" href="#local-guide">Local Guide</a><li>
+				</ul>
+			</nav>
+		</header>
+		<main class="center">
+			<div class="breakout banner">
+				{{ assets['sweetcorn/banner'].tag(class="banner-img") }}
+				<a href="https://forms.gle/tzodvp2nEns65dLU6" class="button banner-btn fs-700"> Register Now! </a>
+			</div>
+			<div class="content columns-3">
+				<div>
+					<h1 class="center-text ff-primary-heading call-out"> Iowa City, Iowa July 4-6</h1>
+					<p class="color-primary text-bf">
+						Shuck off your inhibitions, crop dust off your dancing shoes, and
+						meet us on the dance floor for Iowa City's Sweet Corn Swingout!
+					</p>
+				</div>
+				<div class="span-2 fs-500 gaps">
+					<p>
+						Join us in Iowa City for a weekend of Lindy Hop classes, live
+						music, and dancing! Shannon Lea Watkins and Kevin Weng will share
+						kernels of wisdom to take your Lindy Hop dancing to the next level.
+						There will be three dances, including a live band on Saturday night
+						where the rhythms of <a
+							href="https://www.sweetieandthetoothaches.com/">Sweetie and the
+							Toothaches</a> will get you hot & buttered. 
+					</p>
+					<p>
+					The <a
+						href="https://summerofthearts.org/festival/2025-iowa-city-jazz-festival/">Iowa
+						City Jazz Festival</a> is happening at the same time and mere
+					blocks away from our programming! In between classes and dances, you
+					can meander the streets of Iowa City, enjoying street food, artist
+					booths, and live jazz of all varieties. We may even take our dancing
+					to the streets!
+					</p>
+				</div>
+			</div>
+
+			{% include 'sweetcorn/schedule.html' %}
+			{% include 'sweetcorn/passes.html' %}
+
+			<div class="content columns-3">
+				<div class="span-3 center stack">
+					<a href="https://forms.gle/tzodvp2nEns65dLU6" class="button stacked fs-700"> Register Now! </a>
+				</div>
+			</div>
+
+			{% include 'sweetcorn/instructors.html' %}
+			{% include 'sweetcorn/local-guide.html' %}
+
+		</main>
+		<footer class="main-footer center fs-200">
+
+			<div>
+				<b>Have a question?</b>
+				<p> Contact us at: <a href="mailto:danceiowacity@gmail.com">danceiowacity@gmail.com</a></p>
+				<p> View our <a href="https://docs.google.com/document/d/1Vww4W2TPWfHzbu7yfFPONb7Q0gKbdxpCLq9BEPVHX2k/edit?usp=sharing"> code of conduct </a> </p>
+			</div>
+
+			<div>
+				<b>Follow Sweet Corn Swingout</b>
+				<p> for updates </p>
+				<a href="https://www.facebook.com/share/1BsandYsw7/">Facebook</a>
+			</div>
+
+			<div>
+				<p>
+					Persons attending Sweet Corn Swingout events may be recorded or
+					photographed as an event attendee. These images may be used for Sweet
+					Corn Swingout programming or promotion.
+				</p>
+			</div>
+
+			<div>
+				<b> Return to full website </b>
+				<p>
+				<a href="https://danceiowacity.com/swing.html">Iowa City Swing Dance</a>
+				</p>
+				<p>
+				<a href="https://danceiowacity.com/">Iowa City Dance Calendar</a>
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

@@ -9,7 +9,7 @@ HASH_PREFIX_LENGTH = 8
 
 @dataclasses.dataclass
 class FileAsset:
-    original_file: str
+    original_file: pathlib.Path
 
     @functools.cached_property
     def hash(self) -> str:
@@ -17,17 +17,22 @@ class FileAsset:
             return hashlib.file_digest(f, "sha256").hexdigest()[:HASH_PREFIX_LENGTH]
 
     @property
-    def key(self):
-        return pathlib.Path(self.original_file).relative_to("templates/")
+    def key(self) -> str:
+        return str(pathlib.Path(self.original_file).relative_to("templates/"))
 
     @property
-    def relative_path(self) -> str:
+    def relative_path(self) -> pathlib.Path:
         path = pathlib.Path(self.original_file).relative_to("templates/")
         parent = path.parent
         stem = path.stem
         suffix = path.suffix
 
-        return str(parent / f"{stem}.{self.hash}{suffix}")
+        return parent / f"{stem}.{self.hash}{suffix}"
 
-    def write(self, out_dir: str):
-        shutil.copy2(self.original_file, pathlib.Path(out_dir) / self.relative_path)
+    @property
+    def absolute_path(self) -> pathlib.Path:
+        return pathlib.Path("/") / self.relative_path
+
+    def write(self, out_dir: pathlib.Path):
+        self.relative_path.parent.mkdir(exist_ok=True, parents=True)
+        shutil.copy2(self.original_file, out_dir / self.relative_path)

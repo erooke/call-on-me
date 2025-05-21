@@ -1,0 +1,42 @@
+{% macro instructor(name, img) -%}
+<section>
+	<div class="profile-img-container stack">
+		{{ assets[img].tag(class="center stacked profile-img") }}
+		<div class="bg-stripe full-bleed stacked"></div>
+	</div>
+	<p>
+		<b>{{name}}</b> {{ caller() }}
+	</p>
+</section>
+{%- endmacro %}
+<section id="instructors" class="content columns-3">
+	<hgroup class="ff-primary-heading center-text span-3">
+		<h1 class="fs-700"> Instructors </h1>
+	</hgroup>
+	{% call instructor("Kevin Weng (he/him)", "sweetcorn/profile_1") %}
+			has been dancing and teaching for 15 years and has long been one of the
+			favorite Leaders in the global scene. His dancing emphasises the
+			conversation with his partner within the music. He makes his partner feel
+			seen and creates a space that "allows me to be creative". He is excited
+			to work with Shannon and share some of their favorite things!
+	{% endcall %}
+
+	{% call instructor("Shannon Lea Watkins (she/her)", "sweetcorn/profile_2") %}
+			is a force on the dance floor, delighted by a squishy pass, a fiery swing
+			out, and a new idea. Honoring her ancestors of both blood and Lindy Hop,
+			she strives to embody connection, improvisation, and social justice in
+			her life and in her dance. After two- stepping with her dad in her
+			childhood living room, learning to Lindy Hop in Bloomington, Indiana, and
+			honing her craft in San Francisco, California, she now calls Iowa City
+			home. For years, she taught with Kevin across the San Francisco Bay Area,
+			and she is excited to share things they love with the Midwest!
+	{% endcall %}
+
+	{% call instructor("Sammy Copeland (they/them)", "sweetcorn/profile_3") %} 
+			fell in love with Lindy Hop and jazz dancing in 2017 and hasn't stopped
+			dancing since! Sammy loves the expressive nature of solo dancing to jazz
+			and how you can connect so intimately with the music. They love finding
+			rhythms to play with, nuances in the music, and ways to express
+			individual style.
+	{% endcall %}
+</section>
