@@ -9,7 +9,7 @@ HASH_PREFIX_LENGTH = 8
 
 @dataclasses.dataclass
 class FileAsset:
-    original_file: str
+    original_file: pathlib.Path
 
     @functools.cached_property
     def hash(self) -> str:

@@ -1,5 +1,4 @@
 import concurrent.futures
-import glob
 import pathlib
 import shutil
 import subprocess
@@ -83,15 +82,16 @@ def do_the_thing(use_local_events=False, upload=False):
     pathlib.Path(f"{out_dir}/assets").mkdir(parents=True, exist_ok=True)
 
     assets = {}
-    for file_path_str in glob.iglob("templates/assets/*"):
-        path = pathlib.Path(file_path_str)
+    asset_path = pathlib.Path("templates/assets")
+    for path in asset_path.rglob("*"):
+
         if path.suffix in [".jpg", ".jpeg", ".webp"]:
             key = path.stem
             image_asset = image_assets.resize(str(path))
             assets[key] = image_asset
             image_asset.write(out_dir)
         else:
-            asset = FileAsset(file_path_str)
+            asset = FileAsset(path)
             asset.write(out_dir)
             assets[asset.key] = asset
 
