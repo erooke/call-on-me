@@ -103,7 +103,7 @@ def do_the_thing(use_local_events=False, upload=False):
 
     pathlib.Path(f"{out_dir}/sweetcorn").mkdir(parents=True, exist_ok=True)
     with open(f"{out_dir}/sweetcorn/index.html", "w+") as f:
-        template = template_env.get_template("sweetcorn.html")
+        template = template_env.get_template("sweetcorn/index.html")
         f.write(template.render(events=events, assets=assets))
 
     with open(f"{out_dir}/swing.html", "w+") as f:

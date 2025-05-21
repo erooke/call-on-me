@@ -1,0 +1,90 @@
+{% macro event(name, desc, location, time, note, img) -%}
+<div>
+	<h1 class="text-bf">{{name}}</h1>
+	{% if desc %}
+		<p>{{desc}}</p>
+	{% endif %}
+	{% if location %}
+		<p>{{location}}</p>
+	{% endif %}
+	{% if time %}
+		<p>{{time}}</p>
+	{% endif %}
+	{% if note %}
+		<p class="fs-200">{{note}}</p>
+	{% endif %}
+</div>
+{%- endmacro %}
+
+{% macro day(day) -%}
+<section class="gaps">
+	<h1 class="button center-text fs-600">{{day}}</h1>
+	{{ caller() }}
+</section>
+{%- endmacro %}
+
+<section id="schedule" class="content columns-3">
+		<hgroup class="ff-primary-heading center-text span-3">
+			<h1 class="fs-700"> Full Weekend Schedule </h1>
+			<p class="fs-600"> July 4 - 6, 2025 </p>
+		</hgroup>
+		{% call day("Friday") %}
+			{{ event(
+					name = "Friday Advanced Lindy Hop Classes",
+					desc = "Instructors: Shannon Lea Watkins and Kevin Weng",
+					location = "Masonic Lodge Event Space: 312 E College St.",
+					time = "Friday, 5–6:40 p.m.",
+				)
+			}}
+			{{ event(
+					name = "Lindy in the Streets",
+					desc = "Hit the streets of Jazz Festival with Dj'd dancing, food, drinks and live music",
+					location = "Downtown Iowa City (location TBA)",
+					time = "Friday, 7-9:30p.m.",
+				)
+			}}
+		{% endcall %}
+		{% call day("Saturday") %}
+			{{ event(
+					name = "All-Levels Solo Jazz Class",
+					desc = "Instructor: Sammy Copeland",
+					location = "Masonic Lodge Event Space: 312 E College St.",
+					time = "Saturday, 10:15–11:30 a.m.",
+				)
+			}}
+			{{ event(
+					name = "Intermediate Lindy Hop Classes",
+					desc = "Instructors: Shannon Lea Watkins and Kevin Weng",
+					location = "Masonic Lodge Event Space: 312 E College St.",
+					time = "Saturday, 1–4:30 p.m.",
+				)
+			}}
+			{{ event(
+					name="Beginner Lesson",
+					desc= "Included in admission to the evening dance.",
+					location = "Old Brick: 26 E Market St.",
+					time = "Saturday, 7:30–8 p.m.",
+				)
+			}}
+			{{ event(
+					name="Dance with Sweetie and the Toothaches",
+					location = "Old Brick: 26 E Market St.",
+					time = "Saturday, 8 p.m.–midnight",
+					note = "There will be fireworks from 9:30 to 10 p.m. near this venue. Please schedule your arrival/departure or bring ear plugs if you have sound sensitivity.",
+				)
+			}}
+		 <div class="stack">
+			{{ assets['sweetcorn/sweetie'].tag(class="stacked profile-img") }}
+			<div class="bg-stripe full-bleed stacked"></div>
+		 </div>
+		{% endcall %}
+		{% call day("Sunday") %}
+			{{ event(
+					name="Sunday Goodbye Dance",
+					desc = "Enjoy complimentary pastries. The cocktail lounge offers morning cocktails, coffee, and espresso drinks for purchase.",
+					location="The Green House Cocktail Lounge: 505 E Washington St.",
+					time= "Sunday, 10:30 a.m.–12:30 p.m.",
+				)
+			}}
+		{% endcall %}
+</section>
