@@ -88,7 +88,7 @@ def do_the_thing(use_local_events=False, upload=False):
         if path.is_dir():
             continue
 
-        if path.suffix in [".jpg", ".jpeg", ".webp"]:
+        if path.suffix in [".jpg", ".jpeg", ".webp", ".png"]:
             key = str(path.relative_to(asset_path).parent / path.stem)
             image_asset = image_assets.resize(path)
             assets[key] = image_asset
