@@ -34,5 +34,5 @@ class FileAsset:
         return pathlib.Path("/") / self.relative_path
 
     def write(self, out_dir: pathlib.Path):
-        self.relative_path.parent.mkdir(exist_ok=True, parents=True)
+        (out_dir / self.relative_path.parent).mkdir(exist_ok=True, parents=True)
         shutil.copy2(self.original_file, out_dir / self.relative_path)
