@@ -18,17 +18,18 @@ SRCSET_WIDTHS = [
 
 @dataclasses.dataclass
 class ImageAsset:
-    original_name: str
+    original_path: pathlib.Path
     resized_images: list[Image]
 
-    def _resized_name(self, img: Image):
-        basename = pathlib.Path(self.original_name).stem
+    def _resized_name(self, img: Image) -> pathlib.Path:
+        relative_path = self.original_path.relative_to("templates")
+        basename = relative_path.stem
         hashed = hashlib.sha256(img.tobytes()).hexdigest()[:8]
-        return f"/assets/{basename}/{basename}-{img.size[0]}w.{hashed}.webp"
+        return relative_path.parent / basename / f"{basename}-{img.size[0]}w.{hashed}.webp"
 
     def tag(self, **kwargs) -> str:
         srcset = [
-            f"{self._resized_name(img)} {img.size[0]}w" for img in self.resized_images
+            f"/{self._resized_name(img)} {img.size[0]}w" for img in self.resized_images
         ]
         srcset_str = ", ".join(srcset)
 
@@ -61,15 +62,16 @@ class ImageAsset:
         tag = f"<img {attr_str} />"
         return tag
 
-    def write(self, out_dir: str):
+    def write(self, out_dir: pathlib.Path):
         for img in self.resized_images:
-            file_name = out_dir + self._resized_name(img)
-            pathlib.Path(file_name).parent.mkdir(parents=True, exist_ok=True)
-            img.save(file_name, "webp")
+            file = out_dir / self._resized_name(img)
+            file.parent.mkdir(parents=True, exist_ok=True)
+            img.save(file, "webp")
 
 
-def resize(image_name: str) -> ImageAsset:
-    im = Image.open(image_name)
+
+def resize(image_path: pathlib.Path) -> ImageAsset:
+    im = Image.open(image_path)
     original_width, _ = im.size
 
     resized_images = []
@@ -80,4 +82,4 @@ def resize(image_name: str) -> ImageAsset:
         resized = ImageOps.contain(im, (size, size))
         resized_images.append(resized)
 
-    return ImageAsset(image_name, resized_images)
+    return ImageAsset(image_path, resized_images)
