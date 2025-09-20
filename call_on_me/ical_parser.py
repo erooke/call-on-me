@@ -1,5 +1,4 @@
 import datetime
-import re
 
 import arrow
 import lxml.etree
@@ -7,6 +6,7 @@ import lxml.html
 import ical.calendar_stream
 import requests
 
+from .clean import clean_links
 from .event import Event
 
 
@@ -25,11 +25,6 @@ def convert_start_end_dates(start: arrow.Arrow, end: arrow.Arrow):
         return start.to("America/Chicago"), end.to("America/Chicago")
 
 
-def _linkify(match: re.Match) -> str:
-    link = match.group(0).strip()
-    return f' <a href="{link}">{link}</a> '
-
-
 def make_id(e):
     return e.uid + str(e.start)
 
@@ -40,7 +35,7 @@ def _process_html(html: str) -> str:
     # don't judge me
     html = html.strip().removeprefix("<br>")
     html = f" {html} "
-    html = re.sub(" https://.* ", _linkify, html)
+    html = clean_links(html)
     html = html.replace("\n", "<br>")
     # The html has a lot of empty bold tags that don't parse correctly in the browser
     html = html.replace("<b></b>", "").replace("<b>\n</b>", "")

@@ -8,6 +8,7 @@ from typing import Optional
 import arrow
 import requests
 
+from .clean import clean_links
 from .event import Event
 
 
@@ -38,10 +39,13 @@ class _CsvEvent:
         }
         dance_types = {replacements.get(d, d) for d in dance_types}
 
+        description = d.get("Event Description")
+        description = clean_links(description)
+
         return _CsvEvent(
             timestamp=d.get("Timestamp"),
             title=d.get("Event Title"),
-            description=d.get("Event Description"),
+            description=description,
             start_date=d.get("Event Start Date"),
             end_date=d.get("Event End Date (optional)"),
             name=d.get("Your Name (will not be shared)"),
