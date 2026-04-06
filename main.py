@@ -16,7 +16,7 @@ LOCAL_EVENTS_ICAL_URL = "https://calendar.google.com/calendar/ical/danceiowacity
 ZOUK_ICAL_URL = "https://calendar.google.com/calendar/ical/iowazoukdance%40gmail.com/public/basic.ics"
 WEST_COAST_ICAL_URL = "https://calendar.google.com/calendar/ical/c_194368077c66b682a49c7b950f4e9b6036f5cdcecee74dca3a013aa0ac5c3ea7%40group.calendar.google.com/public/basic.ics"
 TANGO_ICAL_URL = "https://calendar.google.com/calendar/ical/21e7dd52f1a988e3fac57bc226b659b21858c2d8c141ddcbd3ee2255861e6aac%40group.calendar.google.com/public/basic.ics"
-
+MY_BALLROOM_ICAL_URL = "https://calendar.google.com/calendar/ical/c_1532eee2360dcafa6ddf3f4973c052b052c1d4e242233e970902dc5a2d66265f%40group.calendar.google.com/public/basic.ics"
 
 BALLROOM_ICAL_URL = """https://calendar.google.com/calendar/ical/corridordance%40gmail.com/public/basic.ics"""
 
@@ -25,6 +25,7 @@ S3_OUT_DIR = pathlib.Path("/tmp/out")
 
 def sync(out_dir: str):
     """aws s3 sync out/ s3://call-on-me-file-host --delete --acl public-read"""
+
     sync1 = subprocess.run(
         [
             "aws",
@@ -187,6 +188,7 @@ def fetch_calendars():
     ical_calendar_config = [
         (LOCAL_EVENTS_ICAL_URL, "SWING"),
         (BALLROOM_ICAL_URL, "BALLROOM"),
+        (MY_BALLROOM_ICAL_URL, "BALLROOM"),
         (ZOUK_ICAL_URL, "ZOUK"),
         (WEST_COAST_ICAL_URL, "WEST_COAST"),
         (TANGO_ICAL_URL, "TANGO"),
