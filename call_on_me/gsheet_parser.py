@@ -36,6 +36,7 @@ class _CsvEvent:
         dance_types = list(map(str.upper, dance_types))
         replacements = {
             "SALSA/BACHATA": "SALSA",
+            "LINE DANCING": "LINE_DANCING",
         }
         dance_types = {replacements.get(d, d) for d in dance_types}
 
