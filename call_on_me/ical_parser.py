@@ -6,9 +6,9 @@ import lxml.html
 import ical.calendar_stream
 import requests
 
+
 from .clean import clean_links
 from .event import Event
-
 
 NOW = arrow.now(tz="America/Chicago").replace(hour=17, minute=59).shift(days=-1)
 
@@ -89,6 +89,10 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
             if "sunday zouk" in rw.summary.lower():
                 continue
 
+        dance_types = [dance_type]
+        if "boogie benefit" in rw.summary.lower():
+            dance_types = ["WEST_COAST", "SWING", "ZOUK", "TANGO"]
+
         events.append(
             Event(
                 rw.uid,
@@ -98,7 +102,7 @@ def parse_ical(raw_ical: str, start_at: arrow.Arrow, dance_type: str) -> list[Ev
                 convert_start_end_dates(start, end)[0],
                 convert_start_end_dates(start, end)[1],
                 source="travel_calendar",
-                dance_types=[dance_type],
+                dance_types=dance_types,
             )
         )
 
