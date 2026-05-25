@@ -84,15 +84,13 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "arn:aws:acm:us-east-1:698062986382:certificate/d5b6fc2e-56c1-46b4-98bf-19b2e62ec8cf"
+    acm_certificate_arn = "arn:aws:acm:us-east-1:698062986382:certificate/346dc00a-4901-423a-bbf0-3eb61764ebba"
     ssl_support_method = "sni-only"
   }
 
   aliases = [
     "danceiowacity.com",
     "www.danceiowacity.com",
-    "iowacityswing.com",
-    "www.iowacityswing.com",
   ]
 
   restrictions {
