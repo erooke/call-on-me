@@ -30,8 +30,8 @@
 		</hgroup>
 		{% call day("Friday") %}
 			{{ event(
-					name = "Friday Advanced Lindy Hop Classes",
-					desc = "Instructors: Shannon Lea Watkins and Kevin Weng",
+					name = "Advanced Lindy Hop Classes",
+					desc = "Instructors: Phil Attoh-Okine and Shannon Lea Watkins",
 					location = "Masonic Lodge Event Space: 312 E College St.",
 					time = "Friday, 5–6:40 p.m.",
 				)
@@ -39,44 +39,50 @@
 			{{ event(
 					name = "Lindy in the Streets",
 					desc = "Hit the streets of Jazz Festival with Dj'd dancing, food, drinks and live music",
-					location = "DJ'ed dancing at the corner of N. Linn St. and E. Market St.",
+					location = "Corner of N. Linn St. and E. Market St.",
 					time = "Friday, 7-9:30p.m.",
 				)
 			}}
 		{% endcall %}
 		{% call day("Saturday") %}
 			{{ event(
-					name = "All-Levels Solo Jazz Class",
-					desc = "Instructor: Sammy Copeland",
+					name = "All-Levels House Dance",
+					desc = "Instructor: Javi Javier",
 					location = "Masonic Lodge Event Space: 312 E College St.",
-					time = "Saturday, 10:15–11:30 a.m.",
+					time = "Saturday, 10:15–noon",
 				)
 			}}
 			{{ event(
 					name = "Intermediate Lindy Hop Classes",
-					desc = "Instructors: Shannon Lea Watkins and Kevin Weng",
+					desc = "Instructors: Phil Attoh-Okine and Shannon Lea Watkins",
 					location = "Masonic Lodge Event Space: 312 E College St.",
 					time = "Saturday, 1–4:30 p.m.",
 				)
 			}}
 			{{ event(
-					name="Beginner Lesson",
-					desc= "Included in admission to the evening dance.",
-					location = "Old Brick: 26 E Market St.",
-					time = "Saturday, 7:30–8 p.m.",
+					name="Beginner Lindy Hop Classes",
+					desc= "Instructors: Alina Lusebrink and Nicole Frydman",
+					location = "TBA",
+					time = "Saturday, 2:15-4:30 p.m.",
 				)
 			}}
 			{{ event(
-					name="Dance with Sweetie and the Toothaches",
-					location = "Old Brick: 26 E Market St.",
+					name="Dance with Showboat Jazz Collective",
+					location = "The James Theatre: 213 N Gilbert St.",
 					time = "Saturday, 8 p.m.–midnight",
 					note = "There will be fireworks from 9:30 to 10 p.m. near this venue. Please schedule your arrival/departure or bring ear plugs if you have sound sensitivity.",
 				)
 			}}
 		 <div class="stack">
-			{{ assets['sweetcorn/sweetie'].tag(class="stacked profile-img") }}
+			{{ assets['sweetcorn/showboat'].tag(class="stacked profile-img") }}
 			<div class="bg-stripe full-bleed stacked"></div>
 		 </div>
+			{{ event(
+					name="Late-Night Blues Dance",
+					location = "Brewery Square (sangha): 123 North Linn Street | Suite 2F",
+					time = "Saturday, Midnight - 2 a.m."
+				)
+			}}
 		{% endcall %}
 		{% call day("Sunday") %}
 			{{ event(
