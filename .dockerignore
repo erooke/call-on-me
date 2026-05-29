@@ -1,4 +1,6 @@
 *
+terraform/
+venv/
 !requirements.txt
 !main.py
 !call_on_me/
