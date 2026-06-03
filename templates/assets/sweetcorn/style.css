@@ -239,6 +239,8 @@ a.button {
 
 .profile-img {
 	z-index: 1;
+	object-fit: cover;
+	aspect-ratio: 1 / 1 !important;
 }
 
 .profile-img-container {
