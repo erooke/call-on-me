@@ -71,14 +71,6 @@ def do_the_thing(use_local_events=False, upload=False):
     out_dir = S3_OUT_DIR if upload else pathlib.Path("out")
     start_at = start_of_day(arrow.now(tz="America/Chicago")).replace(day=1)
 
-    if use_local_events:
-        with open("example-calendars/gsheet.csv") as f:
-            csv_events = f.read()
-    else:
-        csv_events = gsheet_parser.gsheet_csv()
-
-    events = gsheet_parser.parse_gsheet(csv_events, start_at)
-
     shutil.rmtree(out_dir, ignore_errors=True)
     pathlib.Path(f"{out_dir}/assets").mkdir(parents=True, exist_ok=True)
 
@@ -105,11 +97,19 @@ def do_the_thing(use_local_events=False, upload=False):
     pathlib.Path(f"{out_dir}/sweetcorn").mkdir(parents=True, exist_ok=True)
     with open(f"{out_dir}/sweetcorn/index.html", "w+") as f:
         template = template_env.get_template("sweetcorn/index.html")
-        f.write(template.render(events=events, assets=assets))
+        f.write(template.render(assets=assets))
 
     with open(f"{out_dir}/swing.html", "w+") as f:
         template = template_env.get_template("swing-index.html")
-        f.write(template.render(events=events, assets=assets))
+        f.write(template.render(assets=assets))
+
+    if use_local_events:
+        with open("example-calendars/gsheet.csv") as f:
+            csv_events = f.read()
+    else:
+        csv_events = gsheet_parser.gsheet_csv()
+
+    events = gsheet_parser.parse_gsheet(csv_events, start_at)
 
     if use_local_events:
         with open("example-calendars/travel.ics") as f:
