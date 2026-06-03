@@ -6,6 +6,7 @@ import pathlib
 from PIL import Image, ImageOps
 
 SRCSET_WIDTHS = [
+    160,
     320,
     480,
     640,
@@ -25,7 +26,9 @@ class ImageAsset:
         relative_path = self.original_path.relative_to("templates")
         basename = relative_path.stem
         hashed = hashlib.sha256(img.tobytes()).hexdigest()[:8]
-        return relative_path.parent / basename / f"{basename}-{img.size[0]}w.{hashed}.webp"
+        return (
+            relative_path.parent / basename / f"{basename}-{img.size[0]}w.{hashed}.webp"
+        )
 
     def tag(self, **kwargs) -> str:
         srcset = [
@@ -67,7 +70,6 @@ class ImageAsset:
             file = out_dir / self._resized_name(img)
             file.parent.mkdir(parents=True, exist_ok=True)
             img.save(file, "webp")
-
 
 
 def resize(image_path: pathlib.Path) -> ImageAsset:
