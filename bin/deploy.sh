@@ -6,5 +6,5 @@ echo "Pushing..."
 ./bin/push-image.sh
 echo "Forcing the lambda to pick up the new image"
 ./bin/bump-lambda-image.sh
-echo "Syncing..."
-./bin/sync-bucket.sh
+echo "Invoking the new lambda"
+./bin/invoke-lambda.sh
