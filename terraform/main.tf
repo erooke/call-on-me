@@ -169,8 +169,8 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 
 resource "aws_lambda_function" "call-on-me-updater-cron" {
   function_name = "call-on-me-updater-cron"
-  timeout       = 15 # seconds
-  memory_size   = 1024
+  timeout       = 30 # seconds
+  memory_size   = 2048
   image_uri     = "698062986382.dkr.ecr.us-east-2.amazonaws.com/call-on-me:latest"
   package_type  = "Image"
 
