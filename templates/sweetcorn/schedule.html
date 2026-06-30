@@ -1,4 +1,4 @@
-{% macro event(name, desc, location, time, note, img) -%}
+{% macro event(name, desc, location, time, note, img, rain_location) -%}
 <div>
 	<h1 class="text-bf">{{name}}</h1>
 	{% if desc %}
@@ -6,6 +6,9 @@
 	{% endif %}
 	{% if location %}
 		<p>{{location}}</p>
+	{% endif %}
+	{% if rain_location %}
+		<p><span class="text-bf">Rain Location:</span> {{rain_location}}</p>
 	{% endif %}
 	{% if time %}
 		<p>{{time}}</p>
@@ -40,6 +43,7 @@
 					name = "Lindy in the Streets",
 					desc = "Hit the streets of Jazz Festival with Dj'd dancing, food, drinks and live music",
 					location = "Corner of N. Linn St. and E. Market St.",
+					rain_location = "Masonic Lodge: 312 E College St.",
 					time = "Friday, 7-9:30p.m.",
 				)
 			}}
